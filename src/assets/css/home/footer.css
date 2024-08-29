@@ -1,0 +1,67 @@
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 50px 0;
+}
+
+.footer-col {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer-logo {
+  width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+  margin-bottom: 20px;
+}
+
+.rights-text {
+  font-size: 14px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.contact-list li {
+  margin-bottom: 10px;
+}
+
+.contact-list li span {
+  margin-left: 10px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.social-icons a svg {
+  color: #fff;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .footer-col {
+    text-align: center;
+  }
+}

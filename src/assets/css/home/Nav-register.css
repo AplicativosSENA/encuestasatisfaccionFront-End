@@ -1,0 +1,62 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-image: url('../../img/Valoracion.jpeg');
+    background-size: cover; /* La imagen cubre todo el área del nav */
+    background-position: center; /* La imagen se centra en el nav */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    z-index: 1000; /* Asegura que la Navbar esté sobre otros elementos */
+    height: 13vh; /* Ajusta la altura según sea necesario */
+    border-bottom: 9px solid #000000; /* Agrega un borde en la parte inferior */
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: flex-start; /* El logo se alinea a la izquierda */
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar-logo img {
+    height: 50px;
+}
+
+.navbar-text-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+}
+
+.navbar-text {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    display: inline;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.navbar-links a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}

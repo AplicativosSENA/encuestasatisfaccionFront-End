@@ -1,0 +1,100 @@
+.project {
+  padding: 50px 0 100px 0;
+  text-align: center;
+}
+
+.project h2 {
+  font-size: 35px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.project p {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  width: 96%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.proj-card {
+  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  padding-left: 100px;
+  padding-right: 100px;
+  
+}
+
+.proj-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.proj-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.proj-imgbx {
+  flex: 1;
+  border-radius: 20px 0 0 20px;
+  overflow: hidden;
+}
+
+.proj-imgbx img {
+  width: 100%; /* Ajustar imagen al 100% del contenedor */
+  height: 213px; /* Altura automática para mantener la proporción */
+  object-fit: cover; /* Cubrir completamente el contenedor */
+  border-radius: 20px 0 0 20px;
+  transition: transform 0.3s ease;
+  
+}
+
+.proj-info {
+  background-color: #0E0E0E;
+  color: #fff;
+  padding: 20px;
+  border-radius: 0 20px 20px 0;
+  text-align: left;
+  flex: 2;
+  transition: transform 0.3s ease; /* Transición para efecto hover */
+}
+
+.proj-info h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.proj-info p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .proj-card {
+    flex-direction: column; /* Cambiar a disposición de columna en pantallas pequeñas */
+    align-items: center; /* Centrar elementos en la columna */
+  }
+
+  .proj-content {
+    max-width: 100%; /* Ajustar ancho al 100% en pantallas pequeñas */
+    margin-bottom: 20px; /* Espacio entre tarjetas en pantallas pequeñas */
+  }
+
+  .proj-info {
+    border-radius: 0 0 20px 20px; /* Ajustar borde inferior en pantallas pequeñas */
+  }
+
+  .proj-imgbx img {
+    border-radius: 20px 20px 0 0; /* Ajustar borde superior en pantallas pequeñas */
+  }
+}

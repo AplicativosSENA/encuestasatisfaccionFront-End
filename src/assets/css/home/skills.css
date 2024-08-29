@@ -1,0 +1,113 @@
+.skill {
+  padding: 50px 0;
+  position: relative;
+}
+
+.skill-bx {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+.skill-bx h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.skill-bx p {
+  font-size: 16px;
+  color: #B8B8B8;
+  letter-spacing: 0.8px;
+  margin-bottom: 30px;
+}
+
+.owl-carousel .item {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  text-align: center;
+  margin: 0 10px;
+  opacity: 0.5;
+}
+
+.owl-carousel .item img {
+  width: 40%;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.owl-carousel .item h5 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.owl-carousel .item.center {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.background-image-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+@media (max-width: 1024px) {
+  .skill-bx {
+    padding: 20px 15px;
+  }
+
+  .skill-bx h2 {
+    font-size: 28px;
+  }
+
+  .skill-bx img {
+    width: 70%;
+  }
+
+  .skill-bx h5 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-bx {
+    padding: 15px 10px;
+  }
+
+  .skill-bx h2 {
+    font-size: 24px;
+  }
+
+  .skill-bx img {
+    width: 80%;
+  }
+
+  .skill-bx h5 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-bx {
+    padding: 10px 5px;
+  }
+
+  .skill-bx h2 {
+    font-size: 20px;
+  }
+
+  .skill-bx img {
+    width: 90%;
+  }
+
+  .skill-bx h5 {
+    font-size: 14px;
+  }
+}
