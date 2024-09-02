@@ -51,17 +51,16 @@
 }
 
 .banner button {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 20px;
-  margin-top: 60px;
-  letter-spacing: 0.8px;
+  color: #000000;
+  font-weight: 800;
+  font-size: 60px;
+  letter-spacing: 0.9px;
   display: flex;
   align-items: center;
 }
 
 .banner button svg {
-  font-size: 25px;
+  font-size: 30px;
   margin-left: 10px;
   transition: 0.3s ease-in-out;
 }
