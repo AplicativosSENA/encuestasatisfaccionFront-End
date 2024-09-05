@@ -8,7 +8,7 @@
     background-position: center; /* La imagen se centra en el nav */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     z-index: 1000; /* Asegura que la Navbar esté sobre otros elementos */
-    height: 23vh; /* Ajusta la altura según sea necesario */
+    height: 15vh; /* Ajusta la altura según sea necesario */
     border-bottom: 6px solid #000000; /* Agrega un borde en la parte inferior */
 }
 
