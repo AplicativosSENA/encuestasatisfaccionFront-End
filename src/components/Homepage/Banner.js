@@ -1,3 +1,4 @@
+// Banner.js
 import React, { useState } from 'react';
 import '../../assets/css/home/banner.css';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -9,13 +10,11 @@ import { useNavigate } from 'react-router-dom'; // Importa useNavigate para mane
 
 export const Banner = () => {
   const [inputValue, setInputValue] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate(); // Hook para la navegación
+  const navigate = useNavigate();
 
   // Maneja la entrada del usuario
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
-    setErrorMessage(''); // Limpiar mensaje de error al cambiar el input
   };
 
   // Función para manejar el submit
@@ -33,17 +32,17 @@ export const Banner = () => {
           user['Correo Electrónico'] === inputValue
       );
 
-      // Si se encuentra el registro, redirige a la página de la encuesta
+      // Si se encuentra el registro, redirige a la página de la encuesta con los datos del usuario
       if (foundUser) {
         console.log('Datos válidos:', foundUser);
-        navigate('/encuesta'); // Cambia esta ruta por la correcta a tu página de encuesta
+        navigate('/encuesta', { state: { userData: foundUser } }); // Pasa los datos del usuario
       } else {
-        // Muestra un mensaje de error si no se encuentran datos
-        setErrorMessage('Documento o correo inválido, intenta nuevamente.');
+        // Muestra una ventana emergente con el mensaje de error
+        alert('Documento o correo inválido, intenta nuevamente.');
       }
     } catch (error) {
       console.error('Error al conectar con la API:', error);
-      setErrorMessage('Hubo un error al conectar con la API. Intente de nuevo.');
+      alert('Hubo un error al conectar con la API. Intente de nuevo.');
     }
   };
 
@@ -75,7 +74,6 @@ export const Banner = () => {
                     <button className="Button-submit" onClick={handleSubmit}>
                       <CheckCircle size={25} />
                     </button>
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
                   </div>
                 </div>
               )}
