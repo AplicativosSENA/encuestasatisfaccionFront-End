@@ -2,10 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './components/Home.js';
-import Encuesta from './components/Encuesta/encuesta.js';
-
-
-
+import Encuesta from './components/Encuesta/encuesta.js'; // Asegúrate de que el archivo se llame Encuesta.js
+import Administrativo from './components/Administrativos/administrativos.js'; // Asegúrate de que el archivo se llame Administrativo.js
 
 function AppRoutes() {
   return (
@@ -14,11 +12,11 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/encuesta" element={<Encuesta />} />
-
+          <Route path="/administrativos" element={<Administrativo />} />
         </Routes>
       </div>
     </Router>
   );
 }
 
-export default AppRoutes; 
+export default AppRoutes;

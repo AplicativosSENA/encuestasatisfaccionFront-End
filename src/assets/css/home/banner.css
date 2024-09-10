@@ -124,3 +124,52 @@
 .txt-rotate > .wrap {
   border-right: 0.08em solid #666;
 }
+  
+.admin-button-container {
+  display: flex;
+  width: auto; /* Ajusta según el espacio disponible */
+  padding: 5px;
+  top: 0;
+  right: 0;
+}
+
+.admin-button {
+  background-color: #4cff06;
+  color: white;
+  border: none;
+  padding: 4px 8px; /* Padding reducido para el botón pequeño */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 0.8rem; /* Tamaño de fuente ajustado */
+  line-height: 1; /* Ajusta la altura de línea */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-button h2 {
+  margin: 0; /* Elimina el margen del h2 */
+  font-size: 1.5rem; /* Tamaño de fuente del h2 dentro del botón */
+  font-weight: 600; /* Ajusta el peso de la fuente */
+}
+
+.admin-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -8px; /* Ajusta la posición de la flecha */
+  transform: translateY(-50%);
+  border-width: 6px; /* Tamaño de la flecha ajustado */
+  border-style: solid;
+  border-color: transparent #34f304 transparent transparent; /* Flecha hacia la izquierda */
+}
+
+.admin-button:hover {
+  background-color: #16eb28;
+  transform: translateX(-2px);
+}
+
+.admin-button:hover::before {
+  border-color: transparent #07570e transparent transparent;
+}

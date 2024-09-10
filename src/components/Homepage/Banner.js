@@ -5,39 +5,32 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { CheckCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import axios from '../../Api/Axiosconfig'; // Asegúrate de la ruta correcta
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate para manejar redirecciones
+import axios from '../../Api/Axiosconfig';
+import { useNavigate } from 'react-router-dom';
 
 export const Banner = () => {
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
 
-  // Maneja la entrada del usuario
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
-  // Función para manejar el submit
   const handleSubmit = async () => {
     try {
-      // Llama a la API con el documento o correo ingresado
       const response = await axios.get('/api/aprendices', {
-        params: { query: inputValue }, // Ajusta la consulta según lo que espera tu API
+        params: { query: inputValue },
       });
 
-      // Filtra el array para encontrar un registro que coincida con el documento o correo
       const foundUser = response.data.find(
         (user) =>
           user['Número de Documento'] === parseInt(inputValue) ||
           user['Correo Electrónico'] === inputValue
       );
 
-      // Si se encuentra el registro, redirige a la página de la encuesta con los datos del usuario
       if (foundUser) {
-        console.log('Datos válidos:', foundUser);
-        navigate('/encuesta', { state: { userData: foundUser } }); // Pasa los datos del usuario
+        navigate('/encuesta', { state: { userData: foundUser } });
       } else {
-        // Muestra una ventana emergente con el mensaje de error
         alert('Documento o correo inválido, intenta nuevamente.');
       }
     } catch (error) {
@@ -46,10 +39,21 @@ export const Banner = () => {
     }
   };
 
+  const handleAdministrativoClick = () => {
+    navigate('/administrativos');
+  };
+
   return (
     <section className="banner" id="home">
       <Container>
         <Row className="align-items-center">
+          <Col xs={12}>
+            <div className="admin-button-container">
+              <button className="admin-button" onClick={handleAdministrativoClick}>
+                <h2>Administrativo</h2>
+              </button>
+            </div>
+          </Col>
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) => (

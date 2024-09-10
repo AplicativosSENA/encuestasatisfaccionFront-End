@@ -86,10 +86,14 @@ body {
 .dropdown {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   font-size: 16px;
   background-color: rgba(255, 255, 255, 0.8);
   color: #333;
+}
+
+.dropdown-container label{
+color: #000000;
 }
 
 .form-container {
@@ -97,9 +101,13 @@ body {
   max-width: 1000px;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 70px;
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h3{
+  color: #000000;
 }
 
 .question {

@@ -36,15 +36,56 @@ const Encuesta = () => {
   const handleResponseChange = (questionIndex, response) => {
     setResponses((prevResponses) => ({
       ...prevResponses,
-      [questionIndex]: response,
+      [`question-${questionIndex}`]: response,
     }));
   };
 
+  // Función para verificar si todas las preguntas fueron respondidas
+  const areAllQuestionsAnswered = () => {
+    const totalQuestions = 12; // Cambia este número si añades o quitas preguntas
+    return Object.keys(responses).length === totalQuestions;
+  };
+
   // Función para manejar el envío del formulario
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Respuestas enviadas:', responses);
-    // Aquí puedes agregar la lógica para enviar las respuestas a la API o manejarlas según necesites
+
+    // Verificar si todas las preguntas han sido respondidas
+    if (!areAllQuestionsAnswered()) {
+      alert('Por favor, responda todas las preguntas antes de enviar el formulario.');
+      return;
+    }
+
+    // Convertir respuestas a un array si el backend lo requiere
+    const responsesArray = Object.entries(responses).map(([question, response]) => ({ question, response }));
+
+    const respuestaData = {
+      Ficha: userData.Ficha,
+      Nombre: userData.Nombre,
+      Apellidos: userData.Apellidos,
+      'Nom Instructor': selectedName,
+      "El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas": responses["question-0"],
+      "El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre": responses["question-1"],
+      "El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje": responses["question-2"],
+      "El Instructor le orienta su formación mediante un proyecto formativo": responses["question-3"],
+      "El Instructor incentiva al aprendiz a utilizar la plataforma Territorium en el desarrollo de las actividades de aprendizaje": responses["question-4"],
+      "El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo": responses["question-5"],
+      "El Instructor es puntual al iniciar las sesiones": responses["question-6"],
+      "El Instructor demuestra dominio técnico": responses["question-7"],
+      "El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje": responses["question-8"],
+      "El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades personales direccionando al área competente": responses["question-9"],
+      "El Instructor revisa y asesora los planes de mejoramiento": responses["question-10"],
+      "El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación": responses["question-11"],
+    };
+
+    console.log('Datos a enviar:', respuestaData);
+
+    try {
+      await axios.post('http://localhost:5000/api/respuestas', respuestaData);
+      alert('Respuestas enviadas exitosamente');
+    } catch (error) {
+      console.error('Error enviando respuestas:', error.response || error.message);
+    }
   };
 
   return (
@@ -116,7 +157,7 @@ const Encuesta = () => {
                             type="radio"
                             name={`question-${index}`}
                             value={option}
-                            checked={responses[index] === option}
+                            checked={responses[`question-${index}`] === option}
                             onChange={() => handleResponseChange(index, option)}
                           />
                           {option}
