@@ -34,24 +34,81 @@ body {
   align-items: center;
   padding: 10px 20px;
 }
-
-.dropdown-container {
-  margin-top: 20px;
+.login-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  min-height: 70vh;
+  background: transparent;
 }
 
-.dropdown-container label {
-  margin-bottom: 10px;
-  color: #000; /* Ajusta el color del texto para asegurar que sea visible */
-}
-
-.dropdown-container select {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.login-form {
   background-color: #fff;
-  color: #000; /* Color del texto del dropdown */
-  font-size: 16px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-check input {
+  width: auto;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 10px;
+  background-color: #56ab2f;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #45a029;
+}
+
+.link {
+  display: block;
+  margin-top: 10px;
+  color: #ff914d;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #ffa159;
 }

@@ -1,0 +1,190 @@
+body {
+    font-family: 'Arial, sans-serif';
+    background: linear-gradient(120deg, #a8e063 0%, #56ab2f 40%, #00ff00 70%, #ffffff 100%);
+    color: #fff;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15vh; /* Ajusta el margen superior para no tapar el contenido con la navbar */
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-image: url('../../img/Valoracion.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1000;
+    height: 15vh;
+    border-bottom: 6px solid #000000;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .dropdown-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dropdown-container label {
+    margin-bottom: 10px;
+    color: #000; /* Ajusta el color del texto para asegurar que sea visible */
+  }
+  
+  .dropdown-container select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000; /* Color del texto del dropdown */
+    font-size: 16px;
+  }
+  
+
+#instructor-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilos para el contenedor de fichas */
+.fichas-container {
+  margin-top: 20px;
+}
+
+.fichas-container h2 {
+  font-size: 18px;
+  color: #004d40;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Estilos para la lista de fichas */
+.fichas-container ul {
+  list-style-type: none;
+  padding: 0;
+  color: #000000;
+}
+
+.fichas-container li {
+  padding: 10px;
+  background-color: #e0f7fa;
+  color: #000000;
+  border: 1px solid #b2ebf2;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.fichas-container li:hover {
+  background-color: #b2ebf2;
+}
+
+/* Mensaje cuando no hay fichas disponibles */
+.fichas-container li:last-child {
+  color: #000000;
+  font-style: italic;
+}
+
+.fichas-container {
+  margin-top: 20px;
+}
+
+.fichas-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ficha-item {
+  margin-bottom: 10px;
+  border: 1px solid #b2ebf2;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Estilos para la lista de fichas */
+.fichas-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ficha-item {
+  margin-bottom: 10px;
+  border: 1px solid #b2ebf2;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Estilos generales para la tabla */
+.ficha-respuestas table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.ficha-respuestas th, .ficha-respuestas td {
+  border: 1px solid #b2ebf2;
+  padding: 8px;
+  text-align: left;
+}
+
+.ficha-respuestas th {
+  background-color: #e0f7fa;
+  color: #000000;
+}
+
+.ficha-respuestas td {
+  background-color: #f1f1f1;
+}
+
+.ficha-respuestas {
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  margin-top: 10px; /* Espacio arriba del contenedor */
+}
+
+table {
+  border-collapse: collapse; /* Asegura que los bordes de las celdas se colapsen en una sola línea */
+  width: 100%; /* Hace que la tabla ocupe el 100% del ancho del contenedor */
+}
+
+th, td {
+  border: 1px solid #ddd; /* Agrega un borde a las celdas de la tabla */
+  padding: 8px; /* Agrega un espaciado interno a las celdas */
+}
+
+th {
+  background-color: #f2f2f2; /* Color de fondo para los encabezados de las columnas */
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+  .encuesta-container {
+    width: 95%;
+  }
+
+  .navbar {
+    padding: 10px;
+  }
+
+  #instructor-select {
+    font-size: 14px;
+  }
+}

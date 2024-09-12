@@ -1,23 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import '../../assets/css/Administrativos/administrativos.css'; // Asegúrate de que la ruta del CSS sea correcta
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import '../../assets/css/Administrativos/administrativos.css';
 
-const Encuesta = () => {
-  const [instructores, setInstructores] = useState([]);
+const LoginForm = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate(); // Inicializa useNavigate
 
-  useEffect(() => {
-    const fetchInstructores = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/instructor');
-        console.log(response.data); // Verifica que los datos están correctos
-        setInstructores(response.data);
-      } catch (error) {
-        console.error('Error al obtener los instructores:', error);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!email || !password) {
+      Swal.fire('Error', 'Por favor complete todos los campos', 'error');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/administrativo/login', {
+        correo: email,
+        contraseña: password,
+      });
+
+      // Suponiendo que la respuesta es { token: '...' }
+      if (response.data.token) {
+        Swal.fire('Bienvenido', 'Inicio de sesión exitoso', 'success');
+        localStorage.setItem('token', response.data.token); // Guardar el token en localStorage si es necesario
+        navigate('/busqueda'); // Redirige a la página de búsqueda
+      } else {
+        Swal.fire('Error', 'No se pudo iniciar sesión', 'error');
       }
-    };
-
-    fetchInstructores();
-  }, []);
+    } catch (error) {
+      Swal.fire('Error', 'Error al iniciar sesión', 'error');
+      console.error('Error al iniciar sesión:', error);
+    }
+  };
 
   return (
     <div className="main-container">
@@ -26,19 +45,41 @@ const Encuesta = () => {
           {/* Aquí podrías agregar contenido adicional en el navbar */}
         </div>
       </nav>
-      <div className="dropdown-container">
-        <label htmlFor="instructor-select">Seleccione un Instructor:</label>
-        <select id="instructor-select">
-          <option value="">--Selecciona un Instructor--</option>
-          {instructores.map((instructor) => (
-            <option key={instructor._id} value={instructor._id}>
-              {instructor['Nom Instructor']} {/* Accede al campo correcto */}
-            </option>
-          ))}
-        </select>
+
+      <div className="login-container">
+        <div className="login-form">
+          <h2>Iniciar Sesión</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Ingrese su email"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Ingrese su contraseña"
+                required
+              />
+            </div>
+            <button type="submit" className="btn-submit">
+              Iniciar Sesión
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Encuesta;
+export default LoginForm;
