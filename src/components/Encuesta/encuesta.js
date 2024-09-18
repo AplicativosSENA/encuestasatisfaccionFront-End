@@ -9,21 +9,41 @@ const Encuesta = () => {
   const [selectedName, setSelectedName] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [instructors, setInstructors] = useState([]);
-  const [responses, setResponses] = useState({}); // Estado para las respuestas
+  const [responses, setResponses] = useState({});
+  const [blockedInstructors, setBlockedInstructors] = useState(new Set()); // Usamos un Set para un acceso más rápido
 
   useEffect(() => {
     if (!userData) return;
-
+  
     const fetchInstructors = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/instructor/ficha/${userData.Ficha}`);
         console.log("Fetched Instructors:", response.data);
+  
+        const instructorsRatedRaw = localStorage.getItem('instructorsRated');
+        const instructorsRated = instructorsRatedRaw ? JSON.parse(instructorsRatedRaw) : [];
+        console.log("Instructors Rated:", instructorsRated);
+  
+        // Asegurarse de que todos los elementos sean objetos con las claves correctas
+        const filteredInstructorsRated = instructorsRated.filter(item => 
+          item.instructor && item.aprendiz
+        );
+  
+        const blockedSet = new Set(
+          filteredInstructorsRated
+            .filter(rating => rating.aprendiz === userData.Nombre)
+            .map(rating => rating.instructor)
+        );
+        console.log("Blocked Instructors:", [...blockedSet]);
+  
+        setBlockedInstructors(blockedSet);
         setInstructors(response.data);
+        
       } catch (error) {
         console.error("Error fetching instructors:", error);
       }
     };
-
+  
     fetchInstructors();
   }, [userData]);
 
@@ -32,7 +52,6 @@ const Encuesta = () => {
     setShowForm(true);
   };
 
-  // Función para manejar el cambio en las respuestas
   const handleResponseChange = (questionIndex, response) => {
     setResponses((prevResponses) => ({
       ...prevResponses,
@@ -40,29 +59,31 @@ const Encuesta = () => {
     }));
   };
 
-  // Función para verificar si todas las preguntas fueron respondidas
   const areAllQuestionsAnswered = () => {
     const totalQuestions = 12; // Cambia este número si añades o quitas preguntas
     return Object.keys(responses).length === totalQuestions;
   };
 
-  // Función para manejar el envío del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Verificar si todas las preguntas han sido respondidas
     if (!areAllQuestionsAnswered()) {
       alert('Por favor, responda todas las preguntas antes de enviar el formulario.');
       return;
     }
 
-    // Convertir respuestas a un array si el backend lo requiere
-    const responsesArray = Object.entries(responses).map(([question, response]) => ({ question, response }));
+    const instructorsRated = JSON.parse(localStorage.getItem('instructorsRated')) || [];
+    const alreadyRated = instructorsRated.some(rating => rating.instructor === selectedName && rating.aprendiz === userData.Nombre);
+
+    if (alreadyRated) {
+      alert('Ya has calificado a este instructor.');
+      return;
+    }
 
     const respuestaData = {
       Ficha: userData.Ficha,
-      Nombre: userData.Nombre,
-      Apellidos: userData.Apellidos,
+      Nombre: userData.Nombre || "No especificado",
+      Apellidos: userData.Apellidos || "No especificado",
       'Nom Instructor': selectedName,
       "El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas": responses["question-0"],
       "El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre": responses["question-1"],
@@ -78,13 +99,23 @@ const Encuesta = () => {
       "El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación": responses["question-11"],
     };
 
-    console.log('Datos a enviar:', respuestaData);
-
     try {
       await axios.post('http://localhost:5000/api/respuestas', respuestaData);
+
+      // Actualizar el estado de instructores calificados
+      const updatedInstructorsRated = [...instructorsRated, { instructor: selectedName, aprendiz: userData.Nombre }];
+      localStorage.setItem('instructorsRated', JSON.stringify(updatedInstructorsRated));
+
+      // Actualizar el estado de instructores bloqueados
+      setBlockedInstructors(prev => new Set(prev).add(selectedName));
+
+      // Limpiar formulario y estado
       alert('Respuestas enviadas exitosamente');
+      setSelectedName('');
+      setShowForm(false);
     } catch (error) {
-      console.error('Error enviando respuestas:', error.response || error.message);
+      console.error('Error enviando respuestas:', error.response ? error.response.data : error.message);
+      alert('Ocurrió un error al enviar las respuestas. Por favor, intente de nuevo.');
     }
   };
 
@@ -92,6 +123,7 @@ const Encuesta = () => {
     <div className="main-container">
       <nav className="navbar">
         <div className="navbar-container">
+          {/* Aquí puedes agregar elementos de navegación si es necesario */}
         </div>
       </nav>
 
@@ -101,10 +133,10 @@ const Encuesta = () => {
           {userData && (
             <ul>
               <li><strong>Ficha:</strong> {userData.Ficha}</li>
-              <li><strong>Sede:</strong> {userData.Sede}</li>
+              <li><strong>Programa:</strong> {userData.Sede}</li>
               <li><strong>Jornada:</strong> {userData.Jornada}</li>
               <li><strong>Número de Documento:</strong> {userData['Número de Documento']}</li>
-              <li><strong>Nombre:</strong> {userData.Nombre}</li>
+              <li><strong>Nombres:</strong> {userData.Nombre}</li>
               <li><strong>Apellidos:</strong> {userData.Apellidos}</li>
               <li><strong>Celular:</strong> {userData.Celular}</li>
               <li><strong>Correo Electrónico:</strong> {userData['Correo Electrónico']}</li>
@@ -114,7 +146,7 @@ const Encuesta = () => {
 
         <div className="content">
           <div className="dropdown-container">
-            <label htmlFor="nameDropdown">Selecciona un nombre:</label>
+            <label htmlFor="nameDropdown">Seleccione un Instructor:</label>
             <select
               id="nameDropdown"
               value={selectedName}
@@ -123,7 +155,11 @@ const Encuesta = () => {
             >
               <option value="">Seleccionar...</option>
               {instructors.map((instructor, index) => (
-                <option key={index} value={instructor['Nom Instructor']}>
+                <option 
+                  key={index} 
+                  value={instructor['Nom Instructor']}
+                  disabled={blockedInstructors.has(instructor['Nom Instructor'])}
+                >
                   {instructor['Nom Instructor']}
                 </option>
               ))}
@@ -132,9 +168,9 @@ const Encuesta = () => {
 
           {showForm && (
             <div className="form-container">
-              <h3>Formulario para {selectedName}</h3>
+              <h3>Valoración para {selectedName}</h3>
               <form onSubmit={handleSubmit}>
-                {[
+                {[ 
                   "El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas.",
                   "El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre.",
                   "El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje.",
@@ -146,24 +182,22 @@ const Encuesta = () => {
                   "El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje.",
                   "El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades personales direccionando al área competente.",
                   "El Instructor revisa y asesora los planes de mejoramiento.",
-                  "El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación."
+                  "El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación."
                 ].map((question, index) => (
-                  <div key={index} className="question">
+                  <div key={index} className="question-container">
                     <label>{question}</label>
-                    <div className="radio-group">
-                      {["Muy Satisfecho", "Satisfecho", "Neutro", "Insatisfecho", "Muy Insatisfecho"].map((option) => (
-                        <label key={option}>
-                          <input
-                            type="radio"
-                            name={`question-${index}`}
-                            value={option}
-                            checked={responses[`question-${index}`] === option}
-                            onChange={() => handleResponseChange(index, option)}
-                          />
-                          {option}
-                        </label>
-                      ))}
-                    </div>
+                    <select 
+                      value={responses[`question-${index}`] || ''}
+                      onChange={(e) => handleResponseChange(index, e.target.value)}
+                      required
+                    >
+                      <option value="">Selecciona una opción...</option>
+                      <option value="Muy Satisfecho">Muy Satisfecho</option>
+                      <option value="Satisfecho">Satisfecho</option>
+                      <option value="Neutro">Neutro</option>
+                      <option value="Insatisfecho">Insatisfecho</option>
+                      <option value="Muy Insatisfecho">Muy Insatisfecho</option>
+                    </select>
                   </div>
                 ))}
                 <button type="submit" className="submit-button">Enviar</button>

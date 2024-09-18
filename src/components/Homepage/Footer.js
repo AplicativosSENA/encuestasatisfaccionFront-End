@@ -15,13 +15,10 @@ const Footer = () => {
             <h5>Contacto</h5>
             <ul className="contact-list">
               <li>
-                <span>Teléfono: (+57) 323-796-4191</span>
+                <span>Correo Electrónico: jdrincon@sena.edu.co</span>
               </li>
               <li>
-                <span>Correo Electrónico: aplicativos.cfafc@gmail.com</span>
-              </li>
-              <li>
-                <span>Dirección: Calle Kennedy del Derechos reservados SENA (Centro De Formacion En Actividad Fisica y Cultura)</span>
+                <span>Dirección: transversal 78j nro 41d - 15 sur - Kennedy - Bogotá D.C</span>
               </li>
             </ul>
           </Col>

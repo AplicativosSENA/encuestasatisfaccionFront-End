@@ -13,7 +13,7 @@ const Encuesta = () => {
   useEffect(() => {
     const fetchInstructores = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/instructor');
+        const response = await axios.get('http://localhost:5000/api/instructor/unicos');
         setInstructores(response.data);
       } catch (error) {
         console.error('Error al obtener los instructores:', error);
@@ -31,7 +31,7 @@ const Encuesta = () => {
           const response = await axios.get(
             `http://localhost:5000/api/administrativo/instructor/ficha/${selectedInstructor}`
           );
-          setFichas(response.data.fichas); // Asegúrate de que esto devuelve un array de fichas
+          setFichas(response.data.fichas);
         } catch (error) {
           console.error('Error al obtener las fichas del instructor:', error);
         }
@@ -44,7 +44,12 @@ const Encuesta = () => {
   }, [selectedInstructor]);
 
   const handleInstructorChange = (event) => {
-    setSelectedInstructor(event.target.value);
+    const instructor = event.target.value;
+    setSelectedInstructor(instructor);
+
+    // Limpiar fichas y respuestas al cambiar el instructor
+    setFichas([]);
+    setRespuestas({});
   };
 
   const toggleFicha = async (index) => {
@@ -52,13 +57,12 @@ const Encuesta = () => {
       setExpandedFichas(prev => prev.filter(i => i !== index));
     } else {
       setExpandedFichas(prev => [...prev, index]);
-  
+
       const fichaId = fichas[index];
-      console.log(`Fetching respuestas for fichaId: ${fichaId}`); // Verifica el fichaId
-  
       try {
-        const response = await axios.get(`http://localhost:5000/api/respuestas/respuestas/${fichaId}`);
-        console.log('Respuestas obtenidas:', response.data); // Verifica los datos recibidos
+        const response = await axios.get(`http://localhost:5000/api/respuestas/respuestas/${fichaId}`, {
+          params: { instructor: selectedInstructor }
+        });
         setRespuestas(prev => ({
           ...prev,
           [index]: response.data
@@ -68,7 +72,6 @@ const Encuesta = () => {
       }
     }
   };
-  
 
   return (
     <div className="main-container">
@@ -109,6 +112,7 @@ const Encuesta = () => {
                       <table>
                         <thead>
                           <tr>
+                            {/* Agrega aquí los encabezados de la tabla */}
                             <th>Ficha</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
@@ -128,30 +132,30 @@ const Encuesta = () => {
                           </tr>
                         </thead>
                         <tbody>
-                        {respuestas[index] && Array.isArray(respuestas[index]) ? (
-  respuestas[index].map((respuesta, idx) => (
-    <tr key={idx}>
-      <td>{respuesta.Ficha}</td>
-      <td>{respuesta.Nombre}</td>
-      <td>{respuesta.Apellidos}</td>
-      <td>{respuesta['Nom Instructor']}</td>
-      <td>{respuesta["El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas"]}</td>
-      <td>{respuesta["El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre"]}</td>
-      <td>{respuesta["El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje"]}</td>
-      <td>{respuesta["El Instructor le orienta su formación mediante un proyecto formativo"]}</td>
-      <td>{respuesta["El Instructor incentiva al aprendiz a utilizar la plataforma Territorium en el desarrollo de las actividades de aprendizaje"]}</td>
-      <td>{respuesta["El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo"]}</td>
-      <td>{respuesta["El Instructor es puntual al iniciar las sesiones"]}</td>
-      <td>{respuesta["El Instructor demuestra dominio técnico"]}</td>
-      <td>{respuesta["El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje"]}</td>
-      <td>{respuesta["El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades personales direccionando al área competente"]}</td>
-      <td>{respuesta["El Instructor revisa y asesora los planes de mejoramiento"]}</td>
-      <td>{respuesta["El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación"]}</td>
-    </tr>
-  ))
-) : (
-  <tr><td colSpan="16">Cargando respuestas...</td></tr>
-)}
+                          {respuestas[index] && Array.isArray(respuestas[index]) ? (
+                            respuestas[index].map((respuesta, idx) => (
+                              <tr key={idx}>
+                                <td>{respuesta.Ficha}</td>
+                                <td>{respuesta.Nombre}</td>
+                                <td>{respuesta.Apellidos}</td>
+                                <td>{respuesta['Nom Instructor']}</td>
+                                <td>{respuesta["El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas"]}</td>
+                                <td>{respuesta["El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre"]}</td>
+                                <td>{respuesta["El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje"]}</td>
+                                <td>{respuesta["El Instructor le orienta su formación mediante un proyecto formativo"]}</td>
+                                <td>{respuesta["El Instructor incentiva al aprendiz a utilizar la plataforma Territorium en el desarrollo de las actividades de aprendizaje"]}</td>
+                                <td>{respuesta["El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo"]}</td>
+                                <td>{respuesta["El Instructor es puntual al iniciar las sesiones"]}</td>
+                                <td>{respuesta["El Instructor demuestra dominio técnico"]}</td>
+                                <td>{respuesta["El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje"]}</td>
+                                <td>{respuesta["El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades personales direccionando al área competente"]}</td>
+                                <td>{respuesta["El Instructor revisa y asesora los planes de mejoramiento"]}</td>
+                                <td>{respuesta["El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación"]}</td>
+                              </tr>
+                            ))
+                          ) : (
+                            <tr><td colSpan="16">Cargando respuestas...</td></tr>
+                          )}
                         </tbody>
                       </table>
                     </div>

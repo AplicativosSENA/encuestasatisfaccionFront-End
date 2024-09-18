@@ -92,22 +92,43 @@ body {
   color: #333;
 }
 
-.dropdown-container label{
-color: #000000;
+.dropdown-container label {
+  color: #000000;
 }
 
 .form-container {
-  width: 100%;
-  max-width: 1000px;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 70px;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido del formulario */
 }
 
-.form-container h3{
-  color: #000000;
+.submit-button {
+  background-color: #56ab2f; /* Color verde acorde con tu gradiente */
+  color: #fff; /* Texto en blanco */
+  border: none; /* Sin borde */
+  padding: 15px 30px; /* Espaciado interno */
+  font-size: 18px; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negrita */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave en el color y efecto de click */
+}
+
+.submit-button:hover {
+  background-color: #3c7c1e; /* Color más oscuro al hacer hover */
+}
+
+.submit-button:active {
+  background-color: #2a5714; /* Color aún más oscuro al hacer click */
+  transform: scale(0.98); /* Efecto de click */
+}
+
+@media (max-width: 600px) {
+  .submit-button {
+    width: 100%; /* Botón de ancho completo en pantallas pequeñas */
+    padding: 12px 20px; /* Ajustar padding en móviles */
+    font-size: 16px; /* Reducir el tamaño de la fuente */
+  }
 }
 
 .question {
@@ -127,27 +148,4 @@ select {
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: rgba(255, 255, 255, 0.8);
-}
-
-.submit-button {
-  padding: 12px 24px;
-  background-color: #56ab2f; /* Color de fondo */
-  color: #ffffff; /* Color del texto */
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.submit-button:hover {
-  background-color: #3d7e21; /* Color de fondo al pasar el cursor */
-  transform: translateY(-3px); /* Efecto de elevación */
-}
-
-.submit-button:active {
-  background-color: #2f5f19; /* Color de fondo al hacer clic */
-  transform: translateY(1px); /* Efecto al presionar */
 }
