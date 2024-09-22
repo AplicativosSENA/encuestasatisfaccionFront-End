@@ -17,7 +17,7 @@ const Encuesta = () => {
   
     const fetchInstructors = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/instructor/ficha/${userData.Ficha}`);
+        const response = await axios.get(`https://encuestasatisfaccionback-end.onrender.com/api/instructor/ficha/${userData.Ficha}`);
         console.log("Fetched Instructors:", response.data);
   
         const instructorsRatedRaw = localStorage.getItem('instructorsRated');
@@ -100,7 +100,7 @@ const Encuesta = () => {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/respuestas', respuestaData);
+      await axios.post('https://encuestasatisfaccionback-end.onrender.com/api/respuestas', respuestaData);
 
       // Actualizar el estado de instructores calificados
       const updatedInstructorsRated = [...instructorsRated, { instructor: selectedName, aprendiz: userData.Nombre }];

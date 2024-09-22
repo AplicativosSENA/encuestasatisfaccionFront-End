@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:5000', // Cambia el puerto y la URL si es necesario
+  baseURL: 'https://encuestasatisfaccionback-end.onrender.com', // Cambia el puerto y la URL si es necesario
 });
 
 export default instance;
