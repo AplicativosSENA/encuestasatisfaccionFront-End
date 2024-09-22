@@ -7,7 +7,6 @@ import '../../assets/css/Administrativos/administrativos.css';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate(); // Inicializa useNavigate
 
   const handleSubmit = async (event) => {

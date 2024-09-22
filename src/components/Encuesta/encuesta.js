@@ -5,7 +5,7 @@ import axios from 'axios'; // Importamos axios para las llamadas a la API
 
 const Encuesta = () => {
   const location = useLocation();
-  const [userData, setUserData] = useState(location.state?.userData || null);
+  const [userData] = useState(location.state?.userData || null);
   const [selectedName, setSelectedName] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [instructors, setInstructors] = useState([]);
