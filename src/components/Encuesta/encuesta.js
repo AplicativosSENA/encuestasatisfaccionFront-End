@@ -14,28 +14,23 @@ const Encuesta = () => {
 
   useEffect(() => {
     if (!userData) return;
-  
+
     const fetchInstructors = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/instructor/ficha/${userData.Ficha}`);
-        console.log("Fetched Instructors:", response.data);
-  
         const instructorsRatedRaw = localStorage.getItem('instructorsRated');
         const instructorsRated = instructorsRatedRaw ? JSON.parse(instructorsRatedRaw) : [];
-        console.log("Instructors Rated:", instructorsRated);
-  
-        // Asegurarse de que todos los elementos sean objetos con las claves correctas
+        
         const filteredInstructorsRated = instructorsRated.filter(item => 
           item.instructor && item.aprendiz
         );
-  
+
         const blockedSet = new Set(
           filteredInstructorsRated
             .filter(rating => rating.aprendiz === userData.Nombre)
             .map(rating => rating.instructor)
         );
-        console.log("Blocked Instructors:", [...blockedSet]);
-  
+
         setBlockedInstructors(blockedSet);
         setInstructors(response.data);
         
@@ -43,7 +38,7 @@ const Encuesta = () => {
         console.error("Error fetching instructors:", error);
       }
     };
-  
+
     fetchInstructors();
   }, [userData]);
 
@@ -102,14 +97,10 @@ const Encuesta = () => {
     try {
       await axios.post('http://localhost:5000/api/respuestas', respuestaData);
 
-      // Actualizar el estado de instructores calificados
       const updatedInstructorsRated = [...instructorsRated, { instructor: selectedName, aprendiz: userData.Nombre }];
       localStorage.setItem('instructorsRated', JSON.stringify(updatedInstructorsRated));
 
-      // Actualizar el estado de instructores bloqueados
       setBlockedInstructors(prev => new Set(prev).add(selectedName));
-
-      // Limpiar formulario y estado
       alert('Respuestas enviadas exitosamente');
       setSelectedName('');
       setShowForm(false);
@@ -170,7 +161,7 @@ const Encuesta = () => {
             <div className="form-container">
               <h3>Valoración para {selectedName}</h3>
               <form onSubmit={handleSubmit}>
-                {[ 
+                {[
                   "El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas.",
                   "El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre.",
                   "El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje.",
@@ -198,6 +189,7 @@ const Encuesta = () => {
                       <option value="Insatisfecho">Insatisfecho</option>
                       <option value="Muy Insatisfecho">Muy Insatisfecho</option>
                     </select>
+                    <br /> {/* Añadir un espacio entre preguntas */}
                   </div>
                 ))}
                 <button type="submit" className="submit-button">Enviar</button>

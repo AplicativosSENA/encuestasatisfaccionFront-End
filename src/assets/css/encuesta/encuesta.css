@@ -35,11 +35,6 @@ body {
   padding: 10px 20px;
 }
 
-.navbar-logo img {
-  max-height: 100%;
-  max-width: 100%;
-}
-
 .encuesta-container {
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -131,15 +126,19 @@ body {
   }
 }
 
-.question {
-  margin-bottom: 35px;
+.question-container {
+  margin-bottom: 20px; /* Espacio entre las preguntas */
 }
 
-.question label {
+.question-container label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #333;
+  color: #000; /* Color negro para las preguntas */
+}
+
+.form-container h3 {
+  color: #000; /* Color negro para el h3 */
 }
 
 select {

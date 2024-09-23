@@ -58,15 +58,15 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) => (
                 <div className={isVisible ? 'animate__animated animate__fadeIn' : ''}>
-                  <h1>{`¡Encuesta de Satisfacción!`}</h1>
-                  <h1>Bienvenidos</h1>
+                  <h1>{`Encuesta de Satisfacción`}</h1>
+                  <h1>! Bienvenidos ¡</h1>
                   <p>
                     En nuestra comunidad, creemos en el poder de la colaboración, la creatividad y el aprendizaje continuo.
                     Nos esforzamos por crear un entorno donde todos puedan compartir sus conocimientos, desarrollar nuevas habilidades
                     y conectarse con personas de ideas afines.
                   </p>
                   <div className="input-container">
-                    <label htmlFor="document-input">Digite su Numero de Identificacion o Documento:</label>
+                    <label htmlFor="document-input">Digite su Documento de Identificación:</label>
                     <input
                       type="text"
                       id="document-input"
