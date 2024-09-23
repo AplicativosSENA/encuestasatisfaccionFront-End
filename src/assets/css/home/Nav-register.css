@@ -4,11 +4,11 @@
     left: 0;
     width: 100%;
     background-image: url('../../img/Valoracion.jpg');
-    background-size: cover; 
+    background-size: 25%; /* Ajusta el tamaño de la imagen, por ejemplo al 25% */
+    background-repeat: repeat; /* La imagen se repetirá */
     background-position: center; 
-    background-repeat: no-repeat; 
     z-index: 1000; 
-    height: 20vh; /* Mantén la altura para pantallas más grandes */
+    height: 25vh; /* Mantén la altura para pantallas más grandes */
     border-bottom: 0.375rem solid #000000; /* Borde inferior */
 }
 

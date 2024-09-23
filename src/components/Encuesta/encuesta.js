@@ -47,7 +47,6 @@ const Encuesta = () => {
       ...prevResponses,
       [`question-${questionIndex}`]: response,
     }));
-    alert(`Respuesta registrada: ${response}`); // Alerta al seleccionar respuesta
   };
 
   const areAllQuestionsAnswered = () => {
@@ -123,7 +122,9 @@ const Encuesta = () => {
           {/* Aquí puedes agregar elementos de navegación si es necesario */}
         </div>
       </nav>
-
+<br></br>
+<br></br>
+<br></br>
       <div className="encuesta-container">
         <div className="user-data">
           <h2>Datos del Aprendiz</h2>

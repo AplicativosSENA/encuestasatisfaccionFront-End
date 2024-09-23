@@ -24,7 +24,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   z-index: 1000;
-  height: 20vh; /* Mantén la altura para pantallas más grandes */
+  height: 25vh; /* Mantén la altura para pantallas más grandes */
   border-bottom: 6px solid #000000;
 }
 
