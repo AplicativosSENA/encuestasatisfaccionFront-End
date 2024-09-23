@@ -1,53 +1,53 @@
 .footer {
   background-color: #222;
   color: #fff;
-  padding: 50px 300px;
+  padding: 3rem 2rem; /* Cambiado a rem para mayor flexibilidad */
+  text-align: center; /* Centrar texto en dispositivos más pequeños */
 }
 
 .footer-col {
-  text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 2rem; /* Ajustado para mejorar el espaciado */
 }
 
 .footer-logo {
-  width: 100px; /* Ajusta el tamaño del logo según sea necesario */
-  margin-bottom: 20px;
+  width: 6.25rem; /* Ajustado a rem */
+  margin-bottom: 1.25rem; /* Cambiado a rem */
 }
 
 .rights-text {
-  font-size: 14px;
+  font-size: 0.875rem; /* Cambiado a rem */
 }
 
 .contact-list {
   list-style: none;
   padding: 0;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 0.625rem; /* Cambiado a rem */
 }
 
 .contact-list li {
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem; /* Cambiado a rem */
 }
 
 .contact-list li span {
-  margin-left: 10px;
+  margin-left: 0.625rem; /* Cambiado a rem */
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 0.625rem; /* Cambiado a rem */
 }
 
 .social-icons a {
   display: inline-block;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 2.5rem; /* Cambiado a rem */
+  height: 2.5rem; /* Cambiado a rem */
+  line-height: 2.5rem; /* Cambiado a rem */
   text-align: center;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
-  margin: 0 5px;
+  margin: 0 0.3125rem; /* Cambiado a rem */
   transition: background-color 0.3s ease;
 }
 
@@ -57,11 +57,44 @@
 
 .social-icons a svg {
   color: #fff;
-  font-size: 18px;
+  font-size: 1.125rem; /* Cambiado a rem */
 }
 
+/* Media Queries */
 @media (max-width: 768px) {
+  .footer {
+    padding: 2rem 1rem; /* Ajustado para pantallas más pequeñas */
+  }
+
   .footer-col {
-    text-align: center;
+    margin-bottom: 1.5rem; /* Ajustado */
+  }
+
+  .footer-logo {
+    width: 5rem; /* Ajustado */
+  }
+
+  .rights-text {
+    font-size: 0.75rem; /* Ajustado */
+  }
+
+  .social-icons a {
+    width: 2rem; /* Ajustado */
+    height: 2rem; /* Ajustado */
+    line-height: 2rem; /* Ajustado */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 0.5rem; /* Ajustado */
+  }
+
+  .footer-logo {
+    width: 4rem; /* Ajustado */
+  }
+
+  .rights-text {
+    font-size: 0.65rem; /* Ajustado */
   }
 }

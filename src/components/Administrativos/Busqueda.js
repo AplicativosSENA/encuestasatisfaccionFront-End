@@ -13,7 +13,7 @@ const Encuesta = () => {
   useEffect(() => {
     const fetchInstructores = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/instructor/unicos');
+        const response = await axios.get('https://encuestasatisfaccionback-end.onrender.com/api/instructor/unicos');
         setInstructores(response.data);
       } catch (error) {
         console.error('Error al obtener los instructores:', error);
@@ -29,7 +29,7 @@ const Encuesta = () => {
       const fetchFichas = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/administrativo/instructor/ficha/${selectedInstructor}`
+            `https://encuestasatisfaccionback-end.onrender.com/api/administrativo/instructor/ficha/${selectedInstructor}`
           );
           setFichas(response.data.fichas);
         } catch (error) {
@@ -60,7 +60,7 @@ const Encuesta = () => {
 
       const fichaId = fichas[index];
       try {
-        const response = await axios.get(`http://localhost:5000/api/respuestas/respuestas/${fichaId}`, {
+        const response = await axios.get(`https://encuestasatisfaccionback-end.onrender.com/api/respuestas/respuestas/${fichaId}`, {
           params: { instructor: selectedInstructor }
         });
         setRespuestas(prev => ({

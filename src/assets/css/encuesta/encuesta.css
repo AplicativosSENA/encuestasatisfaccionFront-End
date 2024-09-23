@@ -19,7 +19,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-image: url('../../img/Valoracion.jpeg');
+  background-image: url('../../img/Valoracion.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -97,7 +97,36 @@ body {
   align-items: center; /* Centra el contenido del formulario */
 }
 
+.form-container h3 {
+  color: #000000; /* Cambia el color a negro */
+  font-size: 24px; /* Ajusta el tamaño de la fuente si es necesario */
+  font-weight: bold; /* Opcional: negrita */
+  text-align: center; /* Alineación centrada */
+  margin-bottom: 20px; /* Espacio inferior para separarlo de otros elementos */
+}
+
+.question {
+  margin-bottom: 35px; /* Espacio entre cada pregunta y su respuesta */
+}
+
+.question label {
+  display: block;
+  margin-bottom: 10px; /* Espacio entre la etiqueta de la pregunta y el dropdown (respuesta) */
+  font-weight: bold;
+  color: #000; /* Color negro para las preguntas */
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px; /* Espacio entre la respuesta (dropdown) y la siguiente pregunta */
+}
+
 .submit-button {
+  margin-top: 40px; /* Espacio entre la última pregunta y el botón de enviar */
   background-color: #56ab2f; /* Color verde acorde con tu gradiente */
   color: #fff; /* Texto en blanco */
   border: none; /* Sin borde */
@@ -107,6 +136,7 @@ body {
   border-radius: 8px; /* Bordes redondeados */
   cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave en el color y efecto de click */
+  align-self: center; /* Asegura que el botón esté centrado dentro del contenedor */
 }
 
 .submit-button:hover {
@@ -117,6 +147,7 @@ body {
   background-color: #2a5714; /* Color aún más oscuro al hacer click */
   transform: scale(0.98); /* Efecto de click */
 }
+
 
 @media (max-width: 600px) {
   .submit-button {
@@ -147,4 +178,24 @@ select {
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.user-data h2,
+.user-data ul,
+.user-data li {
+  color: #000; /* Asegura que los textos de usuario sean negros */
+}
+
+.dropdown-container label,
+.dropdown {
+  color: #000; /* Cambia el color del texto del dropdown a negro */
+}
+
+.form-container label {
+  color: #000; /* Cambia el color de las preguntas a negro */
+}
+
+.submit-button {
+  background-color: #56ab2f; /* Color de fondo verde */
+  color: #fff; /* Color de texto blanco para el botón */
 }

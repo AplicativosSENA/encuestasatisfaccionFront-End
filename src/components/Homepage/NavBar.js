@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
 import '../../assets/css/home/Nav-register.css'; // Importa el archivo CSS
 
 const Navbar = () => {

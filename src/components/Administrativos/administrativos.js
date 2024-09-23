@@ -7,7 +7,6 @@ import '../../assets/css/Administrativos/administrativos.css';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate(); // Inicializa useNavigate
 
   const handleSubmit = async (event) => {
@@ -19,7 +18,7 @@ const LoginForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/administrativo/login', {
+      const response = await axios.post('https://encuestasatisfaccionback-end.onrender.com/api/administrativo/login', {
         correo: email,
         contraseña: password,
       });

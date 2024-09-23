@@ -1,25 +1,25 @@
 .contact {
-  padding: 50px 0;
-  background-image: url('../../img/color-sharp2.png'); /* Ruta a tu imagen de fondo */
-  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
-  background-position: center; /* Centra la imagen de fondo */
-  background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+  padding: 5rem 0; /* Cambiado a rem */
+  background-image: url('../../img/color-sharp2.png'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
 }
 
 .contact .contact-form {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 30px;
+  border-radius: 1.25rem; /* Cambiado a rem */
+  padding: 2rem; /* Cambiado a rem */
   width: 100%;
-  max-width: 600px; /* Ajusta el ancho máximo del formulario */
-  margin: auto; /* Centra el formulario horizontalmente */
+  max-width: 37.5rem; /* Cambiado a rem */
+  margin: auto; 
 }
 
 .contact .contact-form h2 {
-  font-size: 35px;
+  font-size: 2.5rem; /* Cambiado a rem */
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem; /* Cambiado a rem */
   text-align: center;
 }
 
@@ -31,28 +31,28 @@
 .contact .contact-form textarea {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  padding: 15px 20px;
+  border-radius: 0.3125rem; /* Cambiado a rem */
+  padding: 1rem; /* Cambiado a rem */
   width: 100%;
   color: #fff;
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 1rem; /* Cambiado a rem */
+  margin-bottom: 1rem; /* Cambiado a rem */
 }
 
 .contact .contact-form textarea {
-  resize: vertical; /* Permite redimensionar solo verticalmente */
+  resize: vertical; 
 }
 
 .contact .contact-form button {
   color: #fff;
   font-weight: 700;
-  font-size: 18px;
-  margin-top: 20px;
-  letter-spacing: 0.8px;
+  font-size: 1.125rem; /* Cambiado a rem */
+  margin-top: 1.25rem; /* Cambiado a rem */
+  letter-spacing: 0.05em; /* Cambiado a em */
   background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  padding: 15px 20px;
+  border-radius: 1.25rem; /* Cambiado a rem */
+  padding: 1rem; /* Cambiado a rem */
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -63,16 +63,49 @@
 
 .contact .success {
   color: #4CAF50;
-  margin-top: 10px;
+  margin-top: 0.625rem; /* Cambiado a rem */
 }
 
 .contact .danger {
   color: #FF5722;
-  margin-top: 10px;
+  margin-top: 0.625rem; /* Cambiado a rem */
 }
 
+/* Media Queries */
 @media (max-width: 768px) {
   .contact .contact-form {
-    padding: 20px;
+    padding: 1.5rem; /* Ajustado para dispositivos más pequeños */
+  }
+
+  .contact .contact-form h2 {
+    font-size: 2rem; /* Ajustado */
+  }
+
+  .contact .contact-form input,
+  .contact .contact-form textarea {
+    font-size: 0.875rem; /* Ajustado */
+  }
+
+  .contact .contact-form button {
+    font-size: 1rem; /* Ajustado */
+  }
+}
+
+@media (max-width: 480px) {
+  .contact .contact-form {
+    padding: 1rem; /* Ajustado */
+  }
+
+  .contact .contact-form h2 {
+    font-size: 1.5rem; /* Ajustado */
+  }
+
+  .contact .contact-form input,
+  .contact .contact-form textarea {
+    font-size: 0.75rem; /* Ajustado */
+  }
+
+  .contact .contact-form button {
+    font-size: 0.875rem; /* Ajustado */
   }
 }

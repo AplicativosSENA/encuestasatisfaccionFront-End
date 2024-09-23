@@ -1,72 +1,72 @@
 .banner {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  flex-direction: column; /* Asegura que el contenido se apile verticalmente */
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column; 
   margin-top: 0;
-  padding: 260px 0 100px 0;
+  padding: 20% 0 10%; /* Cambiado a porcentajes para mayor flexibilidad */
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
-  text-align: center; /* Centra el texto dentro del banner */
+  text-align: center; 
 }
 
 .banner .tagline {
   font-weight: 700;
-  letter-spacing: 0.8px;
-  padding: 8px 10px;
+  letter-spacing: 0.05em; /* Cambiado a em para mayor responsividad */
+  padding: 1rem 1.5rem;
   background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  font-size: 20px;
-  margin-bottom: 16px;
+  font-size: 1.25rem; /* Cambiado a rem */
+  margin-bottom: 1rem;
   display: inline-block;
 }
 
 .banner h1 {
-  font-size: 65px;
+  font-size: 4rem; /* Cambiado a rem */
   color: #000000;
   font-weight: 700;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.05em;
   line-height: 1;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .banner h2 {
-  font-size: 30px;
+  font-size: 2rem; /* Cambiado a rem */
   color: #000000;
   font-weight: 700;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.05em;
   line-height: 1;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .banner p {
   color: #000000;
-  font-size: 18px;
-  letter-spacing: 0.8px;
+  font-size: 1rem; /* Cambiado a rem */
+  letter-spacing: 0.05em;
   line-height: 1.5em;
-  width: 96%;
-  max-width: 800px; /* Limita el ancho del párrafo */
-  margin: 0 auto; /* Centra el párrafo horizontalmente */
+  width: 90%; /* Ajustado para mayor responsividad */
+  max-width: 800px; 
+  margin: 0 auto; 
 }
 
 .banner button {
   color: #000000;
   font-weight: 800;
-  font-size: 60px;
-  letter-spacing: 0.9px;
+  font-size: 3rem; /* Cambiado a rem */
+  letter-spacing: 0.05em;
   display: flex;
   align-items: center;
 }
 
 .banner button svg {
-  font-size: 30px;
-  margin-left: 10px;
+  font-size: 1.5rem; /* Cambiado a rem */
+  margin-left: 0.5rem;
   transition: 0.3s ease-in-out;
 }
 
 .banner button:hover svg {
-  margin-left: 25px;
+  margin-left: 1.5rem;
 }
 
 .banner img {
@@ -74,7 +74,7 @@
 }
 
 .Button-join {
-  margin-left: 40px;
+  margin-left: 2rem; /* Cambiado a rem */
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -85,15 +85,15 @@
 }
 
 .Button-join:hover {
-  color: #00FF00; /* Cambia el color al pasar el cursor */
+  color: #00FF00; 
 }
 
 .input-container {
   display: flex;
-  justify-content: center; /* Centra el contenido dentro del contenedor */
+  justify-content: center; 
   align-items: center;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 1rem; /* Cambiado a rem */
+  margin-top: 2rem; /* Cambiado a rem */
 }
 
 .input-container label {
@@ -102,11 +102,11 @@
 }
 
 .document-input {
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 5px;
+  padding: 0.5rem; /* Cambiado a rem */
+  font-size: 1rem; 
+  border-radius: 0.5rem; /* Cambiado a rem */
   border: 1px solid #000000;
-  text-align: center; /* Centra el texto dentro del campo de texto */
+  text-align: center; 
 }
 
 @keyframes updown {
@@ -127,8 +127,8 @@
   
 .admin-button-container {
   display: flex;
-  width: auto; /* Ajusta según el espacio disponible */
-  padding: 5px;
+  width: auto; 
+  padding: 0.5rem; /* Cambiado a rem */
   top: 0;
   right: 0;
 }
@@ -137,10 +137,10 @@
   background-color: #4cff06;
   color: white;
   border: none;
-  padding: 4px 8px; /* Padding reducido para el botón pequeño */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 0.8rem; /* Tamaño de fuente ajustado */
-  line-height: 1; /* Ajusta la altura de línea */
+  padding: 0.5rem 1rem; /* Cambiado a rem */
+  border-radius: 0.5rem; 
+  font-size: 0.8rem; 
+  line-height: 1; 
   transition: background-color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -149,27 +149,61 @@
 }
 
 .admin-button h2 {
-  margin: 0; /* Elimina el margen del h2 */
-  font-size: 1.5rem; /* Tamaño de fuente del h2 dentro del botón */
-  font-weight: 600; /* Ajusta el peso de la fuente */
+  margin: 0; 
+  font-size: 1rem; /* Cambiado a rem */
+  font-weight: 600; 
 }
 
 .admin-button::before {
   content: '';
   position: absolute;
   top: 50%;
-  right: -8px; /* Ajusta la posición de la flecha */
+  right: -0.5rem; /* Cambiado a rem */
   transform: translateY(-50%);
-  border-width: 6px; /* Tamaño de la flecha ajustado */
+  border-width: 0.5rem; /* Cambiado a rem */
   border-style: solid;
-  border-color: transparent #34f304 transparent transparent; /* Flecha hacia la izquierda */
+  border-color: transparent #34f304 transparent transparent; 
 }
 
 .admin-button:hover {
   background-color: #16eb28;
-  transform: translateX(-2px);
+  transform: translateX(-0.1rem); /* Cambiado a rem */
 }
 
 .admin-button:hover::before {
   border-color: transparent #07570e transparent transparent;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .banner h1 {
+    font-size: 3rem; /* Ajusta el tamaño del h1 en pantallas más pequeñas */
+  }
+  .banner h2 {
+    font-size: 1.5rem; /* Ajusta el tamaño del h2 */
+  }
+  .banner p {
+    font-size: 0.9rem; /* Ajusta el tamaño del párrafo */
+  }
+  .banner button {
+    font-size: 2rem; /* Ajusta el tamaño del botón */
+  }
+  .Button-join {
+    margin-left: 1rem; /* Ajusta el margen */
+  }
+}
+
+@media (max-width: 480px) {
+  .banner h1 {
+    font-size: 2.5rem; /* Ajusta aún más para pantallas pequeñas */
+  }
+  .banner h2 {
+    font-size: 1.2rem; 
+  }
+  .banner p {
+    font-size: 0.8rem; 
+  }
+  .banner button {
+    font-size: 1.5rem; 
+  }
 }
