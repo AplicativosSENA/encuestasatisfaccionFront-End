@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom'; // Importar useNavigate
 import '../../assets/css/encuesta/encuesta.css';
 import axios from 'axios';
 
 const Encuesta = () => {
   const location = useLocation();
+  const navigate = useNavigate(); // Definir el hook useNavigate
   const [userData] = useState(location.state?.userData || null);
   const [selectedName, setSelectedName] = useState('');
   const [showForm, setShowForm] = useState(false);
@@ -39,6 +40,7 @@ const Encuesta = () => {
   const handleNameChange = (event) => {
     setSelectedName(event.target.value);
     setShowForm(true);
+    setResponses({});
     alert(`Has seleccionado a ${event.target.value}`);
   };
 
@@ -115,6 +117,11 @@ const Encuesta = () => {
     }
   };
 
+  const goToMain = () => {
+    navigate('/', { replace: true });
+    window.history.replaceState(null, ''); 
+  };
+
   return (
     <div className="main-container">
       <nav className="navbar">
@@ -122,9 +129,9 @@ const Encuesta = () => {
           {/* Aquí puedes agregar elementos de navegación si es necesario */}
         </div>
       </nav>
-<br></br>
-<br></br>
-<br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <div className="encuesta-container">
         <div className="user-data">
           <h2>Datos del Aprendiz</h2>
@@ -166,41 +173,45 @@ const Encuesta = () => {
 
           {showForm && (
             <div className="form-container">
-    <h3>Valoración para {selectedName}</h3>
-    <form onSubmit={handleSubmit}>
-      {[
-        "¿El instructor establece relaciones interpersonales cordiales, armoniosas y respetuosas?",
-        "¿El instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre?",
-        "¿El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje?",
-        "¿El instructor le orienta su formación mediante un proyecto formativo?",
-        "¿El instructor incentiva al aprendiz a utilizar la plataforma Territorium en el desarrollo de las actividades de aprendizaje?",
-        "¿El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo?",
-        "¿El instructor es puntual al iniciar las sesiones?",
-        "¿El instructor demuestra dominio técnico?",
-        "¿El instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje?",
-        "¿El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades personales direccionando al área competente?",
-        "¿El instructor revisa y asesora los planes de mejoramiento?",
-        "¿El instructor contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o el instructor contribuye al mejoramiento del aprendiz en su proceso de formación?"
-      ].map((question, index) => (
-        <div key={index} className="question-container">
-          <label>{question}</label>
-          <select
-            value={responses[`question-${index}`] || ''}
-            onChange={(e) => handleResponseChange(index, e.target.value)}
-            required
-          >
-            <option value="">Selecciona una opción...</option>
-            <option value="Muy Satisfecho">Muy Satisfecho</option>
-            <option value="Satisfecho">Satisfecho</option>
-            <option value="Neutro">Neutro</option>
-            <option value="Insatisfecho">Insatisfecho</option>
-            <option value="Muy Insatisfecho">Muy Insatisfecho</option>
-          </select>
-        </div>
-      ))}
-      <button type="submit" className="submit-button">Enviar</button>
-    </form>
-  </div>
+              <h3>Valoración para {selectedName}</h3>
+              <form onSubmit={handleSubmit}>
+                {[
+                  "¿El instructor establece relaciones interpersonales cordiales, armoniosas y respetuosas?",
+                  "¿El instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre?",
+                  "¿El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje?",
+                  "¿El instructor le orienta su formación mediante un proyecto formativo?",
+                  "¿El instructor incentiva al aprendiz a utilizar la plataforma Territorium en el desarrollo de las actividades de aprendizaje?",
+                  "¿El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo?",
+                  "¿El instructor es puntual al iniciar las sesiones?",
+                  "¿El instructor demuestra dominio técnico?",
+                  "¿El instructor propone fuentes de consulta y ayudas que facilitan el proceso de aprendizaje?",
+                  "¿El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades?",
+                  "¿El instructor revisa y asesora los planes de mejoramiento?",
+                  "¿El instructor contribuye al mejoramiento del aprendiz en su proceso de formación?"
+                ].map((question, index) => (
+                  <div key={index} className="question-container">
+                    <label htmlFor={`question-${index}`}>{question}</label>
+                    <select
+                      id={`question-${index}`}
+                      value={responses[`question-${index}`] || ''}
+                      onChange={(e) => handleResponseChange(index, e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>Seleccione una respuesta...</option>
+                      <option value="Muy Satisfecho">Muy Satisfecho</option>
+                      <option value="Satisfecho">Satisfecho</option>
+                      <option value="Neutro">Neutro</option>
+                      <option value="Insatisfecho">Insatisfecho</option>
+                      <option value="Muy Insatisfecho">Muy Insatisfecho</option>
+                    </select>
+                  </div>
+                ))}
+<div className="button-container">
+<button onClick={goToMain} className="main-button">Inicio</button>
+  <button type="submit" className="submit-btn">Enviar</button>
+</div>
+              </form>
+            </div>
           )}
         </div>
       </div>

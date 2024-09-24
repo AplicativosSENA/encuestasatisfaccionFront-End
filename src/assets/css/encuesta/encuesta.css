@@ -125,37 +125,115 @@ select {
   margin-bottom: 20px; /* Espacio entre la respuesta (dropdown) y la siguiente pregunta */
 }
 
+/* Botones generales */
+/* Estilos para el botón de enviar */
 .submit-button {
-  margin-top: 40px; /* Espacio entre la última pregunta y el botón de enviar */
-  background-color: #56ab2f; /* Color verde acorde con tu gradiente */
-  color: #fff; /* Texto en blanco */
-  border: none; /* Sin borde */
+  background-color: #56ab2f; /* Verde para el botón de enviar */
+  color: #fff; /* Texto blanco */
+  border: none; /* Elimina bordes */
   padding: 15px 30px; /* Espaciado interno */
-  font-size: 18px; /* Tamaño de fuente */
-  font-weight: bold; /* Texto en negrita */
-  border-radius: 8px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave en el color y efecto de click */
-  align-self: center; /* Asegura que el botón esté centrado dentro del contenedor */
+  font-size: 18px; /* Tamaño de la fuente */
+  font-weight: bold; /* Negrita */
+  border-radius: 10px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Efecto de transición suave */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin: 20px 0; /* Espacio superior e inferior */
+  text-align: center;
+  width: 100%; /* Botón de ancho completo en pantallas grandes */
+  max-width: 300px; /* Limita el ancho máximo */
 }
 
 .submit-button:hover {
-  background-color: #3c7c1e; /* Color más oscuro al hacer hover */
+  background-color: #3c7c1e; /* Verde más oscuro al hacer hover */
 }
 
 .submit-button:active {
-  background-color: #2a5714; /* Color aún más oscuro al hacer click */
+  background-color: #2a5714; /* Verde aún más oscuro al hacer click */
+  transform: scale(0.98); /* Efecto de click con leve reducción */
+}
+
+/* Estilos para el botón de volver a la página principal */
+.return-button {
+  background-color: #3498db; /* Azul para el botón de volver */
+  color: #fff; /* Texto blanco */
+  border: none;
+  padding: 12px 25px; /* Espaciado interno */
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; /* Espacio superior */
+  text-align: center;
+  width: 100%; /* Ancho completo en móviles */
+  max-width: 250px; /* Limita el ancho máximo */
+}
+
+.return-button:hover {
+  background-color: #2980b9; /* Azul más oscuro al hacer hover */
+}
+
+.return-button:active {
+  background-color: #216f9e; /* Azul aún más oscuro al hacer click */
   transform: scale(0.98); /* Efecto de click */
 }
 
-
+/* Botones responsivos para pantallas pequeñas */
 @media (max-width: 600px) {
-  .submit-button {
-    width: 100%; /* Botón de ancho completo en pantallas pequeñas */
-    padding: 12px 20px; /* Ajustar padding en móviles */
-    font-size: 16px; /* Reducir el tamaño de la fuente */
+  .submit-button, .return-button {
+    width: 100%; /* Ancho completo en móviles */
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+    padding: 12px 20px; /* Ajustar padding */
   }
 }
+
+/* Contenedor que agrupa los botones */
+.button-container {
+  display: flex;
+  justify-content: center;  /* Centra los botones horizontalmente */
+  gap: 20px;  /* Espacio entre los botones */
+  margin-top: 30px;
+}
+
+/* Estilos generales para los botones */
+button {
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s, color 0.3s;
+  width: 200px;  /* Opcional: ancho fijo para los botones */
+}
+
+/* Estilo para el botón "Enviar" */
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Estilo para el botón "Volver a la página principal" */
+.main-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.main-button:hover {
+  background-color: #45a049;
+}
+
+/* Estilos de accesibilidad y foco */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.5);
+}
+
 
 .question-container {
   margin-bottom: 20px; /* Espacio entre las preguntas */
@@ -193,9 +271,4 @@ select {
 
 .form-container label {
   color: #000; /* Cambia el color de las preguntas a negro */
-}
-
-.submit-button {
-  background-color: #56ab2f; /* Color de fondo verde */
-  color: #fff; /* Color de texto blanco para el botón */
 }
