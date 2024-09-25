@@ -134,7 +134,7 @@
 }
 
 .admin-button {
-  background-color: #4cff06;
+  background-color: #2bd830;
   color: white;
   border: none;
   padding: 0.5rem 1rem; /* Cambiado a rem */
@@ -162,16 +162,16 @@
   transform: translateY(-50%);
   border-width: 0.5rem; /* Cambiado a rem */
   border-style: solid;
-  border-color: transparent #34f304 transparent transparent; 
+  border-color: transparent #4CAF50 transparent transparent; 
 }
 
 .admin-button:hover {
-  background-color: #16eb28;
+  background-color: #4CAF50;
   transform: translateX(-0.1rem); /* Cambiado a rem */
 }
 
 .admin-button:hover::before {
-  border-color: transparent #07570e transparent transparent;
+  border-color: transparent #45a049 transparent transparent;
 }
 
 /* Media Queries */

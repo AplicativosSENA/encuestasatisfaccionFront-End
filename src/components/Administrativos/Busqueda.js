@@ -81,8 +81,11 @@ const Encuesta = () => {
         </div>
       </nav>
       <br></br>
-<br></br>
-<br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <div className="encuesta-container">
         <div className="dropdown-container">
           <label htmlFor="instructor-select">Seleccione un Instructor:</label>

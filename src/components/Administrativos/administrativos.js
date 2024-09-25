@@ -45,8 +45,7 @@ const LoginForm = () => {
         </div>
       </nav>
       <br></br>
-<br></br>
-<br></br>
+      <br></br>
       <div className="login-container">
         <div className="login-form">
           <h2>Iniciar Sesión</h2>

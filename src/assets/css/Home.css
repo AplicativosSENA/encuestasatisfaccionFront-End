@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Arial, sans-serif';
-  background: linear-gradient(120deg, #ff512f, #dd2476); /* Degradado de rojo a naranja */
+  background: #4CAF50;
   color: #fff;
   overflow-x: hidden;
 }

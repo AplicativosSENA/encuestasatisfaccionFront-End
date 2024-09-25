@@ -132,6 +132,10 @@ const Encuesta = () => {
       <br></br>
       <br></br>
       <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
       <div className="encuesta-container">
         <div className="user-data">
           <h2>Datos del Aprendiz</h2>
