@@ -1,10 +1,12 @@
 body {
-  font-family: 'Arial, sans-serif';
-  background: #4CAF50;
-  color: #fff;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
+  font-family: 'Calibri', sans-serif; /* Cambia a Calibri */
+  font-size: 19px; /* Tamaño de fuente como en tu ejemplo */
+  color: #000000; /* Color de texto negro */
+  background: #ffffff no-repeat fixed top center; /* Fondo blanco */
+  padding: 0 40px 40px 40px; /* Espaciado */
+  overflow-wrap: break-word; /* Asegura que el texto se ajuste */
+  word-break: break-word; /* Asegura que el texto se ajuste */
+  word-wrap: break-word; /* Asegura que el texto se ajuste */
 }
 
 .main-container {
@@ -72,6 +74,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative; /* Añadido para cumplir con tu estilo original */
+  word-wrap: break-word; /* Asegura que el texto se ajuste */
 }
 
 .dropdown-container {
@@ -126,7 +130,12 @@ select {
 }
 
 /* Botones generales */
-/* Estilos para el botón de enviar */
+.submit-button,
+.return-button,
+.inicio-button {
+  font-family: 'Calibri', sans-serif; /* Asegura que el tipo de letra se aplique a los botones */
+}
+
 .submit-button {
   background-color: #56ab2f; /* Verde para el botón de enviar */
   color: #fff; /* Texto blanco */
@@ -183,57 +192,11 @@ select {
 /* Botones responsivos para pantallas pequeñas */
 @media (max-width: 600px) {
   .submit-button, .return-button {
-    width: 100%; /* Ancho completo en móviles */
-    font-size: 16px; /* Tamaño de fuente más pequeño */
-    padding: 12px 20px; /* Ajustar padding */
+      width: 100%; /* Ancho completo en móviles */
+      font-size: 16px; /* Tamaño de fuente más pequeño */
+      padding: 12px 20px; /* Ajustar padding */
   }
 }
-
-/* Contenedor que agrupa los botones */
-.button-container {
-  display: flex;
-  justify-content: center;  /* Centra los botones horizontalmente */
-  gap: 20px;  /* Espacio entre los botones */
-  margin-top: 30px;
-}
-
-/* Estilos generales para los botones */
-button {
-  cursor: pointer;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-  transition: background-color 0.3s, color 0.3s;
-  width: 200px;  /* Opcional: ancho fijo para los botones */
-}
-
-/* Estilo para el botón "Enviar" */
-.submit-btn {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.submit-btn:hover {
-  background-color: #45a049;
-}
-
-/* Estilo para el botón "Volver a la página principal" */
-.main-button {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.main-button:hover {
-  background-color: #45a049;
-}
-
-/* Estilos de accesibilidad y foco */
-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.5);
-}
-
 
 .question-container {
   margin-bottom: 20px; /* Espacio entre las preguntas */
@@ -259,16 +222,43 @@ select {
 }
 
 .user-data h2,
-.user-data ul,
-.user-data li {
-  color: #000; /* Asegura que los textos de usuario sean negros */
+.user-data ul {
+  color: #000000; /* Cambia el color de los textos a negro */
 }
 
-.dropdown-container label,
-.dropdown {
-  color: #000; /* Cambia el color del texto del dropdown a negro */
+.encuesta-container {
+  position: relative;
+  padding: 20px;
 }
 
-.form-container label {
-  color: #000; /* Cambia el color de las preguntas a negro */
+.inicio-button {
+  background-color: #28a745; /* Cambia a tu color preferido */
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  position: absolute; /* Para que esté en la parte inferior izquierda */
+  left: 10px; /* Espacio desde la izquierda */
+  bottom: 10px; /* Espacio desde la parte inferior */
+}
+
+.inicio-button:hover {
+  background-color: #218838; /* Color en hover */
+}
+
+.button-container {
+  display: flex; /* Flex para el botón de enviar */
+  justify-content: flex-end; /* Alinea el botón a la derecha */
+  margin-top: 20px; /* Espaciado superior */
+}
+
+/* Estilos de accesibilidad para mejorar la legibilidad */
+h1, h2, h3, h4, p, li {
+  line-height: 1.5; /* Mejora la legibilidad */
+}
+
+/* Mantiene un espacio entre las preguntas */
+.question-container {
+  margin-bottom: 20px;
 }

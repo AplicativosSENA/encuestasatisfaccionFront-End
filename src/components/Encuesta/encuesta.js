@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../assets/css/encuesta/encuesta.css';
 import axios from 'axios';
 
 const Encuesta = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Definir el hook useNavigate
+  const navigate = useNavigate();
   const [userData] = useState(location.state?.userData || null);
   const [selectedName, setSelectedName] = useState('');
   const [showForm, setShowForm] = useState(false);
@@ -22,11 +22,11 @@ const Encuesta = () => {
         setInstructors(response.data);
 
         const instructorsRatedRaw = localStorage.getItem('instructorsRated');
-        const instructorsRated = instructorsRatedRaw ? JSON.parse(instructorsRatedRaw) : [];        
+        const instructorsRated = instructorsRatedRaw ? JSON.parse(instructorsRatedRaw) : [];
         const blockedSet = new Set(
           instructorsRated.filter(rating => rating.aprendiz === userData.Nombre).map(rating => rating.instructor)
         );
-        
+
         setBlockedInstructors(blockedSet);
       } catch (error) {
         console.error("Error fetching instructors:", error);
@@ -54,21 +54,21 @@ const Encuesta = () => {
   const areAllQuestionsAnswered = () => {
     const totalQuestions = 12;
     const unansweredQuestions = [];
-    
+
     for (let i = 0; i < totalQuestions; i++) {
       if (!responses[`question-${i}`]) {
         unansweredQuestions.push(`Pregunta ${i + 1}`);
       }
     }
-    
+
     return unansweredQuestions.length === 0 ? null : unansweredQuestions;
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const unansweredQuestions = areAllQuestionsAnswered();
-    
+
     if (unansweredQuestions) {
       alert(`Por favor, responda todas las preguntas antes de enviar el formulario. Faltan: ${unansweredQuestions.join(', ')}`);
       return;
@@ -119,7 +119,7 @@ const Encuesta = () => {
 
   const goToMain = () => {
     navigate('/', { replace: true });
-    window.history.replaceState(null, ''); 
+    window.history.replaceState(null, '');
   };
 
   return (
@@ -162,7 +162,7 @@ const Encuesta = () => {
               onChange={handleNameChange}
               className="dropdown"
             >
-              <option value="" disabled>Seleccionar...</option> {/* Esta opción no se puede seleccionar */}
+              <option value="" disabled>Seleccionar...</option>
               {instructors.map((instructor, index) => (
                 <option
                   key={index}
@@ -199,9 +199,9 @@ const Encuesta = () => {
                       id={`question-${index}`}
                       value={responses[`question-${index}`] || ''}
                       onChange={(e) => handleResponseChange(index, e.target.value)}
-                      required
+                      className="response-dropdown"
                     >
-                      <option value="" disabled>Seleccione una respuesta...</option>
+                      <option value="">Seleccionar respuesta...</option>
                       <option value="Muy Satisfecho">Muy Satisfecho</option>
                       <option value="Satisfecho">Satisfecho</option>
                       <option value="Neutro">Neutro</option>
@@ -210,14 +210,15 @@ const Encuesta = () => {
                     </select>
                   </div>
                 ))}
-<div className="button-container">
-<button onClick={goToMain} className="main-button">Inicio</button>
-  <button type="submit" className="submit-btn">Enviar</button>
-</div>
+                <div className="button-container">
+                  <button type="submit" className="submit-button">Enviar Respuestas</button>
+                </div>
               </form>
             </div>
           )}
         </div>
+
+        <button onClick={goToMain} className="inicio-button">Inicio</button>
       </div>
     </div>
   );
