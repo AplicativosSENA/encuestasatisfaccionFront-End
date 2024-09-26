@@ -98,7 +98,7 @@ const Encuesta = () => {
       "El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje": responses["question-8"],
       "El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades personales direccionando al área competente": responses["question-9"],
       "El Instructor revisa y asesora los planes de mejoramiento": responses["question-10"],
-      "El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación": responses["question-11"],
+      "El instructor contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación": responses["question-11"],
     };
 
     try {
@@ -125,35 +125,14 @@ const Encuesta = () => {
   return (
     <div className="main-container">
       <nav className="navbar">
-        <div className="navbar-container">
+        <div className="navbar-container" style={{ padding: '15px 0' }}>
           {/* Aquí puedes agregar elementos de navegación si es necesario */}
         </div>
       </nav>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
 
-      <div className="encuesta-container">
-        <div className="user-data">
-          <h2>Datos del Aprendiz</h2>
-          {userData && (
-            <ul>
-              <li><strong>Ficha:</strong> {userData.Ficha}</li>
-              <li><strong>Programa:</strong> {userData.Sede}</li>
-              <li><strong>Jornada:</strong> {userData.Jornada}</li>
-              <li><strong>Número de Documento:</strong> {userData['Número de Documento']}</li>
-              <li><strong>Nombres:</strong> {userData.Nombre}</li>
-              <li><strong>Apellidos:</strong> {userData.Apellidos}</li>
-              <li><strong>Celular:</strong> {userData.Celular}</li>
-              <li><strong>Correo Electrónico:</strong> {userData['Correo Electrónico']}</li>
-            </ul>
-          )}
-        </div>
-
+      <div className="encuesta-container" style={{ marginTop: '70px', padding: '20px' }}>
         <div className="content">
+          <h1>Bienvenido Aprendiz</h1>
           <div className="dropdown-container">
             <label htmlFor="nameDropdown">Seleccione un Instructor:</label>
             <select

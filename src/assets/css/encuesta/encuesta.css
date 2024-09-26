@@ -45,37 +45,27 @@ body {
   position: relative;
 }
 
-.user-data {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Espacio entre los datos del usuario y el contenido restante */
-}
-
-.user-data h2 {
-  margin: 0 0 10px;
-  color: #000000;
-}
-
-.user-data ul {
-  list-style: none;
-  color: #000000;
-  padding: 0;
-  margin: 0;
-}
-
-.user-data li {
-  margin-bottom: 8px;
-}
-
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative; /* Añadido para cumplir con tu estilo original */
   word-wrap: break-word; /* Asegura que el texto se ajuste */
+}
+h1 {
+  font-family: 'Calibri', sans-serif; /* Mantiene la fuente especificada */
+  font-size: 36px; /* Aumenta el tamaño de fuente para mayor impacto */
+  color: #2c3e50; /* Un tono de gris oscuro para el texto */
+  text-align: center; /* Centra el texto */
+  margin-bottom: 20px; /* Espacio inferior para separar de otros elementos */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+}
+
+.content {
+  padding: 20px; /* Agrega un poco de espacio alrededor del contenido */
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar el contenedor */
 }
 
 .dropdown-container {
@@ -109,13 +99,13 @@ body {
   margin-bottom: 20px; /* Espacio inferior para separarlo de otros elementos */
 }
 
-.question {
-  margin-bottom: 35px; /* Espacio entre cada pregunta y su respuesta */
+.question-container {
+  margin-bottom: 20px; /* Espacio entre las preguntas */
 }
 
-.question label {
+.question-container label {
   display: block;
-  margin-bottom: 10px; /* Espacio entre la etiqueta de la pregunta y el dropdown (respuesta) */
+  margin-bottom: 5px;
   font-weight: bold;
   color: #000; /* Color negro para las preguntas */
 }
@@ -126,10 +116,8 @@ select {
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 20px; /* Espacio entre la respuesta (dropdown) y la siguiente pregunta */
 }
 
-/* Botones generales */
 .submit-button,
 .return-button,
 .inicio-button {
@@ -162,7 +150,6 @@ select {
   transform: scale(0.98); /* Efecto de click con leve reducción */
 }
 
-/* Estilos para el botón de volver a la página principal */
 .return-button {
   background-color: #3498db; /* Azul para el botón de volver */
   color: #fff; /* Texto blanco */
@@ -198,39 +185,6 @@ select {
   }
 }
 
-.question-container {
-  margin-bottom: 20px; /* Espacio entre las preguntas */
-}
-
-.question-container label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #000; /* Color negro para las preguntas */
-}
-
-.form-container h3 {
-  color: #000; /* Color negro para el h3 */
-}
-
-select {
-  width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.user-data h2,
-.user-data ul {
-  color: #000000; /* Cambia el color de los textos a negro */
-}
-
-.encuesta-container {
-  position: relative;
-  padding: 20px;
-}
-
 .inicio-button {
   background-color: #28a745; /* Cambia a tu color preferido */
   color: white; /* Color del texto */
@@ -245,12 +199,6 @@ select {
 
 .inicio-button:hover {
   background-color: #218838; /* Color en hover */
-}
-
-.button-container {
-  display: flex; /* Flex para el botón de enviar */
-  justify-content: flex-end; /* Alinea el botón a la derecha */
-  margin-top: 20px; /* Espaciado superior */
 }
 
 /* Estilos de accesibilidad para mejorar la legibilidad */
