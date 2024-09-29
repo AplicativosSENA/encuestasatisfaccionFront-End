@@ -11,6 +11,7 @@ const Encuesta = () => {
   const [showForm, setShowForm] = useState(false);
   const [instructors, setInstructors] = useState([]);
   const [responses, setResponses] = useState({});
+  const [feedback, setFeedback] = useState('');
   const [blockedInstructors, setBlockedInstructors] = useState(new Set());
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const Encuesta = () => {
     setSelectedName(event.target.value);
     setShowForm(true);
     setResponses({});
+    setFeedback('');
     alert(`Has seleccionado a ${event.target.value}`);
   };
 
@@ -49,6 +51,10 @@ const Encuesta = () => {
       ...prevResponses,
       [`question-${questionIndex}`]: response,
     }));
+  };
+
+  const handleFeedbackChange = (event) => {
+    setFeedback(event.target.value);
   };
 
   const areAllQuestionsAnswered = () => {
@@ -91,14 +97,15 @@ const Encuesta = () => {
       "El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre": responses["question-1"],
       "El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje": responses["question-2"],
       "El Instructor le orienta su formación mediante un proyecto formativo": responses["question-3"],
-      "El Instructor incentiva al aprendiz a utilizar la plataforma Territorium en el desarrollo de las actividades de aprendizaje": responses["question-4"],
+      "El Instructor incentiva al aprendiz a utilizar la plataforma Zajuna en el desarrollo de las actividades de aprendizaje": responses["question-4"],
       "El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo": responses["question-5"],
       "El Instructor es puntual al iniciar las sesiones": responses["question-6"],
       "El Instructor demuestra dominio técnico": responses["question-7"],
       "El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje": responses["question-8"],
-      "El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades personales direccionando al área competente": responses["question-9"],
+      "El instructor brinda apoyo sobre temáticas del FPI (Formación Profesional Integral) cuando el aprendiz lo requiere y es comprensivo frente a dificultades": responses["question-9"],
       "El Instructor revisa y asesora los planes de mejoramiento": responses["question-10"],
-      "El instructor contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación": responses["question-11"],
+      "El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación": responses["question-11"],
+      Feedback: feedback,
     };
 
     try {
@@ -163,12 +170,12 @@ const Encuesta = () => {
                   "¿El instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre?",
                   "¿El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje?",
                   "¿El instructor le orienta su formación mediante un proyecto formativo?",
-                  "¿El instructor incentiva al aprendiz a utilizar la plataforma Territorium en el desarrollo de las actividades de aprendizaje?",
+                  "El Instructor incentiva al aprendiz a utilizar la plataforma Zajuna en el desarrollo de las actividades de aprendizaje",
                   "¿El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo?",
                   "¿El instructor es puntual al iniciar las sesiones?",
                   "¿El instructor demuestra dominio técnico?",
                   "¿El instructor propone fuentes de consulta y ayudas que facilitan el proceso de aprendizaje?",
-                  "¿El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades?",
+                  "El instructor brinda apoyo sobre temáticas del FPI (Formación Profesional Integral) cuando el aprendiz lo requiere y es comprensivo frente a dificultades",
                   "¿El instructor revisa y asesora los planes de mejoramiento?",
                   "¿El instructor contribuye al mejoramiento del aprendiz en su proceso de formación?"
                 ].map((question, index) => (
@@ -189,18 +196,27 @@ const Encuesta = () => {
                     </select>
                   </div>
                 ))}
-                <div className="button-container">
-                  <button type="submit" className="submit-button">Enviar Respuestas</button>
-                </div>
-              </form>
-            </div>
-          )}
-        </div>
 
-        <button onClick={goToMain} className="inicio-button">Inicio</button>
-      </div>
-    </div>
-  );
+                <div className="feedback-container">
+                  <h4>Dejale Un Comentario a tu Instructor</h4>
+                  <textarea
+                    value={feedback}
+                    onChange={handleFeedbackChange}
+                    className="feedback-textarea"
+                    placeholder="Escribe tus comentarios aquí..."
+                  />
+                     </div>
+
+<button type="submit" className="submit-button">Enviar Respuestas</button>
+</form>
+</div>
+)}
+
+<button onClick={goToMain} className="back-button">Volver a la Página Principal</button>
+</div>
+</div>
+</div>
+);
 };
 
 export default Encuesta;

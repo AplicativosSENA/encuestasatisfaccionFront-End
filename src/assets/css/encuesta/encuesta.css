@@ -1,3 +1,5 @@
+/* encuesta.css */
+
 body {
   font-family: 'Calibri', sans-serif; /* Cambia a Calibri */
   font-size: 19px; /* Tamaño de fuente como en tu ejemplo */
@@ -6,7 +8,6 @@ body {
   padding: 0 40px 40px 40px; /* Espaciado */
   overflow-wrap: break-word; /* Asegura que el texto se ajuste */
   word-break: break-word; /* Asegura que el texto se ajuste */
-  word-wrap: break-word; /* Asegura que el texto se ajuste */
 }
 
 .main-container {
@@ -48,10 +49,13 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative; /* Añadido para cumplir con tu estilo original */
-  word-wrap: break-word; /* Asegura que el texto se ajuste */
+  align-items: center; /* Centra el contenido */
+  padding: 20px; /* Espacio alrededor del contenido */
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
+
 h1 {
   font-family: 'Calibri', sans-serif; /* Mantiene la fuente especificada */
   font-size: 36px; /* Aumenta el tamaño de fuente para mayor impacto */
@@ -59,13 +63,6 @@ h1 {
   text-align: center; /* Centra el texto */
   margin-bottom: 20px; /* Espacio inferior para separar de otros elementos */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
-}
-
-.content {
-  padding: 20px; /* Agrega un poco de espacio alrededor del contenido */
-  border-radius: 10px; /* Bordes redondeados */
-  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar el contenedor */
 }
 
 .dropdown-container {
@@ -93,7 +90,7 @@ h1 {
 
 .form-container h3 {
   color: #000000; /* Cambia el color a negro */
-  font-size: 24px; /* Ajusta el tamaño de la fuente si es necesario */
+  font-size: 24px; /* Ajusta el tamaño de la fuente */
   font-weight: bold; /* Opcional: negrita */
   text-align: center; /* Alineación centrada */
   margin-bottom: 20px; /* Espacio inferior para separarlo de otros elementos */
@@ -209,4 +206,30 @@ h1, h2, h3, h4, p, li {
 /* Mantiene un espacio entre las preguntas */
 .question-container {
   margin-bottom: 20px;
+}
+
+/* Asegúrate de que el contenedor de feedback ocupe el ancho completo */
+.feedback-container {
+  width: 100%; /* Ancho completo */
+  margin-top: 20px; /* Espacio encima */
+  display: flex; /* Usar flex para centrar el contenido si es necesario */
+  flex-direction: column; /* Alinear elementos en columna */
+}
+
+/* Campo de comentarios */
+.feedback-input {
+  width: 100%; /* Ancho completo */
+  padding: 10px; /* Relleno interno */
+  border: 1px solid #ccc; /* Bordes */
+  border-radius: 4px; /* Bordes redondeados */
+  background-color: #f0f0f0; /* Fondo suave */
+  resize: vertical; /* Permite redimensionar verticalmente */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destacar el campo */
+}
+
+/* Título del contenedor de feedback */
+.feedback-container h4 {
+  font-size: 18px; /* Ajusta el tamaño de fuente según tus necesidades */
+  margin-bottom: 10px; /* Espacio debajo del título */
+  color: #333; /* Cambia el color del texto */
 }
