@@ -66,7 +66,7 @@ export const Banner = () => {
                     y conectarse con personas de ideas afines.
                   </p>
                   <div className="input-container">
-                    <label htmlFor="document-input">Digite su Número de Documento de Identificación:</label>
+                    <label htmlFor="document-input">Digite su número de identificación:</label>
                     <input
                       type="text"
                       id="document-input"
