@@ -5,6 +5,7 @@ const useForm = (initialState) => {
   const [buttonText, setButtonText] = useState('Enviar');
   const [status, setStatus] = useState({});
 
+  
   const onFormUpdate = (category, value) => {
     setFormDetails({
       ...formDetails,
