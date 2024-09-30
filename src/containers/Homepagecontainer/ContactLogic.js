@@ -42,4 +42,5 @@ const useForm = (initialState) => {
   return { formDetails, buttonText, status, onFormUpdate, handleSubmit };
 };
 
+
 export default useForm;
