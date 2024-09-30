@@ -1,3 +1,7 @@
+body {
+  font-family: 'Calibri', sans-serif; /* Aplica la tipografía a todo el cuerpo */
+}
+
 .banner {
   display: flex;
   justify-content: center; 
@@ -22,7 +26,12 @@
   display: inline-block;
 }
 
+.banner h1, .banner h2, .banner p, .banner button, .input-container label {
+  font-family: 'Calibri', sans-serif; /* Asegura que la tipografía se aplique a todos los elementos de texto */
+}
+
 .banner h1 {
+  font-family: 'Calibri', sans-serif; /* Asegura que la tipografía se aplique a todos los elementos de texto */
   font-size: 4rem; /* Cambiado a rem */
   color: #000000;
   font-weight: 700;
@@ -32,6 +41,7 @@
 }
 
 .banner h2 {
+  font-family: 'Calibri', sans-serif; /* Asegura que la tipografía se aplique a todos los elementos de texto */
   font-size: 2rem; /* Cambiado a rem */
   color: #000000;
   font-weight: 700;
@@ -41,6 +51,7 @@
 }
 
 .banner p {
+  font-family: 'Calibri', sans-serif; /* Asegura que la tipografía se aplique a todos los elementos de texto */
   color: #000000;
   font-size: 1rem; /* Cambiado a rem */
   letter-spacing: 0.05em;
@@ -97,6 +108,7 @@
 }
 
 .input-container label {
+  font-family: 'Calibri', sans-serif; /* Asegura que la tipografía se aplique a todos los elementos de texto */
   color: #000000;
   font-size: 1.2rem;
 }
@@ -147,7 +159,6 @@
   align-items: center;
   justify-content: center;
 }
-
 
 .admin-button h2 {
   margin: 0; 

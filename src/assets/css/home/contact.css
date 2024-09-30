@@ -4,6 +4,7 @@
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
+  font-family: 'Calibri', sans-serif; /* Tipografía general */
 }
 
 .contact .contact-form {
@@ -17,6 +18,7 @@
 }
 
 .contact .contact-form h2 {
+  font-family: 'Calibri', sans-serif; /* Tipografía general */
   font-size: 2.5rem; /* Cambiado a rem */
   font-weight: 700;
   margin-bottom: 1.25rem; /* Cambiado a rem */
@@ -29,6 +31,7 @@
 
 .contact .contact-form input,
 .contact .contact-form textarea {
+  font-family: 'Calibri', sans-serif; /* Tipografía general */
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.3125rem; /* Cambiado a rem */
@@ -37,6 +40,7 @@
   color: #fff;
   font-size: 1rem; /* Cambiado a rem */
   margin-bottom: 1rem; /* Cambiado a rem */
+  font-family: 'Calibri', sans-serif; /* Tipografía para inputs y textarea */
 }
 
 .contact .contact-form textarea {
@@ -55,6 +59,7 @@
   padding: 1rem; /* Cambiado a rem */
   cursor: pointer;
   transition: background 0.3s ease;
+  font-family: 'Calibri', sans-serif; /* Tipografía para el botón */
 }
 
 .contact .contact-form button:hover {

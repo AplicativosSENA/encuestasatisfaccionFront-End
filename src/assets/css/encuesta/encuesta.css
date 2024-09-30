@@ -59,7 +59,7 @@ body {
 h1 {
   font-family: 'Calibri', sans-serif; /* Mantiene la fuente especificada */
   font-size: 36px; /* Aumenta el tamaño de fuente para mayor impacto */
-  color: #2c3e50; /* Un tono de gris oscuro para el texto */
+  color: #000000; /* Un tono de gris oscuro para el texto */
   text-align: center; /* Centra el texto */
   margin-bottom: 20px; /* Espacio inferior para separar de otros elementos */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
@@ -89,7 +89,8 @@ h1 {
 }
 
 .form-container h3 {
-  color: #000000; /* Cambia el color a negro */
+  font-family: 'Calibri', sans-serif; /* Mantiene la fuente especificada */
+  color: #000000;
   font-size: 24px; /* Ajusta el tamaño de la fuente */
   font-weight: bold; /* Opcional: negrita */
   text-align: center; /* Alineación centrada */
@@ -101,10 +102,10 @@ h1 {
 }
 
 .question-container label {
+  font-family: 'Calibri', sans-serif; /* Mantiene la fuente especificada */
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
-  color: #000; /* Color negro para las preguntas */
+  color: #000000; /* Color negro para las preguntas */
 }
 
 select {
@@ -229,7 +230,30 @@ h1, h2, h3, h4, p, li {
 
 /* Título del contenedor de feedback */
 .feedback-container h4 {
-  font-size: 18px; /* Ajusta el tamaño de fuente según tus necesidades */
-  margin-bottom: 10px; /* Espacio debajo del título */
-  color: #333; /* Cambia el color del texto */
+  font-family: 'Calibri', sans-serif; /* Mantiene la fuente especificada */
+  display: block;
+  margin-bottom: 5px;
+  color: #000000; /* Color negro para las preguntas */
+  font-weight: normal; /* Sin negrita */
+}
+
+.feedback-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(240, 240, 240, 0.9);
+  resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+/* encuesta.css */
+
+/* Estilo para las instrucciones de la encuesta */
+.survey-instruction {
+  font-family: 'Calibri', sans-serif; /* Mantiene la fuente especificada */
+  font-size: 20px; /* Tamaño de fuente */
+  color: #000000; /* Color gris */
+  text-align: center; /* Alinear al centro */
+  margin: 15px 0; /* Espaciado arriba y abajo */
+  line-height: 1.5; /* Espaciado entre líneas */
 }

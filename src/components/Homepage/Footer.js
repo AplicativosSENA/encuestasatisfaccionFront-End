@@ -9,18 +9,18 @@ const Footer = () => {
       <Container>
         <Row>
           <Col xs={12} sm={6} md={3} className="footer-col">
-            <p className="rights-text">Derechos reservados SENA (Centro De Formacion En Actividad Fisica y Cultura)</p>
-          </Col>
-          <Col xs={12} sm={6} md={3} className="footer-col">
             <h5>Contacto</h5>
             <ul className="contact-list">
               <li>
                 <span>Correo Electrónico: jdrincon@sena.edu.co</span>
               </li>
               <li>
-                <span>Dirección: transversal 78j nro 41d - 15 sur - Kennedy - Bogotá D.C</span>
+                <span>Transversal 78J N° 41D - 15 Sur - Kennedy - Bogotá D.C.</span>
               </li>
             </ul>
+          </Col>
+          <Col xs={12} sm={6} md={3} className="footer-col">
+            <p className="rights-text">Derechos reservados SENA (Centro De Formación en Actividad Física y Cultura)</p>
           </Col>
         </Row>
       </Container>

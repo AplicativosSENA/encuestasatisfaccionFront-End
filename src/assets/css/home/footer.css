@@ -1,97 +1,64 @@
 .footer {
   background-color: #222;
   color: #fff;
-  padding: 3rem 2rem; /* Cambiado a rem para mayor flexibilidad */
-  text-align: center; /* Centrar texto en dispositivos más pequeños */
+  padding: 3rem 2rem; /* Espaciado superior e inferior */
+  text-align: center; /* Centrar texto */
+  font-family: 'Calibri', sans-serif; /* Tipografía */
 }
 
 .footer-col {
-  margin-bottom: 2rem; /* Ajustado para mejorar el espaciado */
+  margin-bottom: 2rem; /* Espaciado inferior para las columnas */
 }
 
-.footer-logo {
-  width: 6.25rem; /* Ajustado a rem */
-  margin-bottom: 1.25rem; /* Cambiado a rem */
-}
-
-.rights-text {
-  font-size: 0.875rem; /* Cambiado a rem */
+.footer h5 {
+  font-size: 1.5rem; /* Tamaño de fuente para los encabezados */
+  margin-bottom: 1rem; /* Espaciado inferior del encabezado */
+  font-weight: 700; /* Negrita */
 }
 
 .contact-list {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-  padding-top: 0.625rem; /* Cambiado a rem */
+  list-style: none; /* Sin viñetas */
+  padding: 0; /* Sin padding */
 }
 
 .contact-list li {
-  margin-bottom: 0.625rem; /* Cambiado a rem */
+  margin-bottom: 0.625rem; /* Espaciado entre elementos de la lista */
 }
 
 .contact-list li span {
-  margin-left: 0.625rem; /* Cambiado a rem */
+  margin-left: 0.625rem; /* Margen izquierdo para el texto */
 }
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.625rem; /* Cambiado a rem */
+.rights-text {
+  font-size: 0.875rem; /* Tamaño de fuente para derechos reservados */
+  margin-top: 1rem; /* Espaciado superior */
+  font-family: 'Calibri', sans-serif; /* Tipografía */
+  color: rgba(255, 255, 255, 0.7); /* Color blanco con opacidad para un efecto sutil */
+  text-align: center; /* Centrar texto */
+  line-height: 1.5; /* Espaciado entre líneas */
 }
 
-.social-icons a {
-  display: inline-block;
-  width: 2.5rem; /* Cambiado a rem */
-  height: 2.5rem; /* Cambiado a rem */
-  line-height: 2.5rem; /* Cambiado a rem */
-  text-align: center;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 0 0.3125rem; /* Cambiado a rem */
-  transition: background-color 0.3s ease;
-}
-
-.social-icons a:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.social-icons a svg {
-  color: #fff;
-  font-size: 1.125rem; /* Cambiado a rem */
-}
-
-/* Media Queries */
+/* Ajustes para pantallas más pequeñas */
 @media (max-width: 768px) {
-  .footer {
-    padding: 2rem 1rem; /* Ajustado para pantallas más pequeñas */
-  }
-
-  .footer-col {
-    margin-bottom: 1.5rem; /* Ajustado */
-  }
-
-  .footer-logo {
-    width: 5rem; /* Ajustado */
-  }
-
   .rights-text {
-    font-size: 0.75rem; /* Ajustado */
-  }
-
-  .social-icons a {
-    width: 2rem; /* Ajustado */
-    height: 2rem; /* Ajustado */
-    line-height: 2rem; /* Ajustado */
+    font-size: 0.75rem; /* Tamaño ajustado */
   }
 }
 
 @media (max-width: 480px) {
+  .rights-text {
+    font-size: 0.65rem; /* Tamaño aún más pequeño */
+  }
+}
+
+
+@media (max-width: 480px) {
   .footer {
-    padding: 1.5rem 0.5rem; /* Ajustado */
+    padding: 1.5rem 0.5rem; /* Ajustado para dispositivos más pequeños */
   }
 
-  .footer-logo {
-    width: 4rem; /* Ajustado */
+  .footer h5 {
+    font-size: 1rem; /* Tamaño de fuente aún más pequeño */
   }
 
   .rights-text {

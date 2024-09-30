@@ -13,6 +13,7 @@ const Encuesta = () => {
   const [responses, setResponses] = useState({});
   const [feedback, setFeedback] = useState('');
   const [blockedInstructors, setBlockedInstructors] = useState(new Set());
+  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para controlar el envío
 
   useEffect(() => {
     if (!userData) return;
@@ -73,6 +74,8 @@ const Encuesta = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (isSubmitting) return; // Evita el envío si ya se está enviando
+
     const unansweredQuestions = areAllQuestionsAnswered();
 
     if (unansweredQuestions) {
@@ -80,11 +83,14 @@ const Encuesta = () => {
       return;
     }
 
+    setIsSubmitting(true); // Establece isSubmitting a true para deshabilitar el botón
+
     const instructorsRated = JSON.parse(localStorage.getItem('instructorsRated')) || [];
     const alreadyRated = instructorsRated.some(rating => rating.instructor === selectedName && rating.aprendiz === userData.Nombre);
 
     if (alreadyRated) {
       alert('Ya has calificado a este instructor.');
+      setIsSubmitting(false); // Restablece isSubmitting si no se envía
       return;
     }
 
@@ -121,6 +127,8 @@ const Encuesta = () => {
     } catch (error) {
       console.error('Error enviando respuestas:', error.response ? error.response.data : error.message);
       alert('Ocurrió un error al enviar las respuestas. Por favor, intente de nuevo.');
+    } finally {
+      setIsSubmitting(false); // Restablece isSubmitting al final
     }
   };
 
@@ -140,6 +148,10 @@ const Encuesta = () => {
       <div className="encuesta-container" style={{ marginTop: '70px', padding: '20px' }}>
         <div className="content">
           <h1>Bienvenido Aprendiz</h1>
+          <p className="survey-instruction">
+            Por favor desarrollar la totalidad de la encuesta con la mayor sinceridad posible, 
+            le recordamos que sus respuestas serán manejadas bajo el principio de confidencialidad.
+          </p>
           <div className="dropdown-container">
             <label htmlFor="nameDropdown">Seleccione un Instructor:</label>
             <select
@@ -198,25 +210,31 @@ const Encuesta = () => {
                 ))}
 
                 <div className="feedback-container">
-                  <h4>Dejale Un Comentario a tu Instructor</h4>
+                  <h4>¿Tiene alguna observación respecto al instructor? ¿cual?</h4>
                   <textarea
                     value={feedback}
                     onChange={handleFeedbackChange}
                     className="feedback-textarea"
                     placeholder="Escribe tus comentarios aquí..."
                   />
-                     </div>
+                </div>
 
-<button type="submit" className="submit-button">Enviar Respuestas</button>
-</form>
-</div>
-)}
+                <button 
+                  type="submit" 
+                  className="submit-button" 
+                  disabled={isSubmitting} 
+                >
+                  {isSubmitting ? 'Enviando...' : 'Enviar Respuestas'}
+                </button>
+              </form>
+            </div>
+          )}
 
-<button onClick={goToMain} className="back-button">Volver a la Página Principal</button>
-</div>
-</div>
-</div>
-);
+          <button onClick={goToMain} className="back-button">Volver a la Página Principal</button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Encuesta;
