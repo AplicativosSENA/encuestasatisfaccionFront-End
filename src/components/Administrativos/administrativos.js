@@ -18,7 +18,7 @@ const LoginForm = () => {
     }
 
     try {
-      const response = await axios.post('https://encuestasatisfaccionback-end.onrender.com/api/administrativo/login', {
+      const response = await axios.post('https://encuestasatisfaccionback-end.onrender.com/api/administrador/login', {
         correo: email,
         contraseña: password,
       });
