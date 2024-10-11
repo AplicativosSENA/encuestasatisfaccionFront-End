@@ -116,12 +116,12 @@ const Encuesta = () => {
           {/* Contenido adicional en el navbar */}
         </div>
       </nav>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="encuesta-container">
         <div className="dropdown-container">
           <label htmlFor="instructor-select">Seleccione un Instructor:</label>
@@ -197,19 +197,22 @@ const Encuesta = () => {
                               ))
                             ) : (
                               <tr>
-                                <td colSpan="15">No hay respuestas disponibles.</td>
+                                <td colSpan="15">No hay respuestas disponibles</td>
                               </tr>
                             )}
                           </tbody>
                         </table>
                       </div>
-                      <button className="excel-button" onClick={() => handleConvertToExcel(index)}>Convertir a Excel</button>
-                      </div>
+                      <button className="export-button" onClick={() => handleConvertToExcel(index)}>
+  Exportar a Excel
+</button>
+
+                    </div>
                   )}
                 </li>
               ))
             ) : (
-              <li>No hay fichas disponibles para este instructor.</li>
+              <li>No hay fichas disponibles para el instructor seleccionado.</li>
             )}
           </ul>
         </div>

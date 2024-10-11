@@ -1,225 +1,226 @@
 body {
-    font-family: 'Arial, sans-serif';
-    background: #39a900;
-    color: #fff;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 100px; /* Espacio superior dentro del contenedor */
-    margin-top: 15vh; /* Ajusta el margen superior para no tapar el contenido con la navbar */
-  }
-  
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-image: url('../../img/Valoracion.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1000;
-    height: 25vh; /* Mantén la altura para pantallas más grandes */
-    border-bottom: 6px solid #000000;
-  }
-  
-  .navbar-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px 20px;
-  }
-  
-  .dropdown-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .dropdown-container label {
-    margin-bottom: 10px;
-    color: #000; /* Ajusta el color del texto para asegurar que sea visible */
-  }
-  
-  .dropdown-container select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #000; /* Color del texto del dropdown */
-    font-size: 16px;
-  }
-  
+  font-family: 'Arial, sans-serif';
+  background: #39a900;
+  color: #fff;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
 
-#instructor-select {
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px; /* Espacio superior dentro del contenedor */
+  margin-top: 15vh; /* Ajusta el margen superior para no tapar el contenido con la navbar */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 10px;
+  background-image: url('../../img/Valoracion.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1000;
+  height: 25vh; /* Mantén la altura para pantallas más grandes */
+  border-bottom: 6px solid #000000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.dropdown-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dropdown-container label {
+  margin-bottom: 10px;
+  color: #000; /* Ajusta el color del texto para asegurar que sea visible */
+}
+
+.dropdown-container select {
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  background-color: #fff;
+  color: #000; /* Color del texto del dropdown */
   font-size: 16px;
+}
+
+
+#instructor-select {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 16px;
 }
 
 /* Estilos para el contenedor de fichas */
 .fichas-container {
-  margin-top: 20px;
+margin-top: 20px;
 }
 
 .fichas-container h2 {
-  font-size: 18px;
-  color: #004d40;
-  margin-bottom: 10px;
-  text-align: center;
+font-size: 18px;
+color: #004d40;
+margin-bottom: 10px;
+text-align: center;
 }
 
 /* Estilos para la lista de fichas */
 .fichas-container ul {
-  list-style-type: none;
-  padding: 0;
-  color: #000000;
+list-style-type: none;
+padding: 0;
+color: #000000;
 }
 
 .fichas-container li {
-  padding: 10px;
-  background-color: #e0f7fa;
-  color: #000000;
-  border: 1px solid #b2ebf2;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
+padding: 10px;
+background-color: #e0f7fa;
+color: #000000;
+border: 1px solid #b2ebf2;
+border-radius: 4px;
+margin-bottom: 10px;
+transition: background-color 0.3s ease;
 }
 
 .fichas-container li:hover {
-  background-color: #b2ebf2;
+background-color: #b2ebf2;
 }
 
 /* Mensaje cuando no hay fichas disponibles */
 .fichas-container li:last-child {
-  color: #000000;
-  font-style: italic;
+color: #000000;
+font-style: italic;
 }
 
 .fichas-container {
-  margin-top: 20px;
+margin-top: 20px;
 }
 
 .fichas-container ul {
-  list-style-type: none;
-  padding: 0;
+list-style-type: none;
+padding: 0;
 }
 
 .ficha-item {
-  margin-bottom: 10px;
-  border: 1px solid #b2ebf2;
-  border-radius: 4px;
-  overflow: hidden;
+margin-bottom: 10px;
+border: 1px solid #b2ebf2;
+border-radius: 4px;
+overflow: hidden;
 }
 
 /* Estilos para la lista de fichas */
 .fichas-container ul {
-  list-style-type: none;
-  padding: 0;
+list-style-type: none;
+padding: 0;
 }
 
 .ficha-item {
-  margin-bottom: 10px;
-  border: 1px solid #b2ebf2;
-  border-radius: 4px;
-  overflow: hidden;
+margin-bottom: 10px;
+border: 1px solid #b2ebf2;
+border-radius: 4px;
+overflow: hidden;
 }
 
 /* Estilos generales para la tabla */
 .ficha-respuestas table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+width: 100%;
+border-collapse: collapse;
+margin-top: 10px;
 }
 
 .ficha-respuestas th, .ficha-respuestas td {
-  border: 1px solid #b2ebf2;
-  padding: 5px;
-  text-align: left;
+border: 1px solid #b2ebf2;
+padding: 5px;
+text-align: left;
 }
 
 .ficha-respuestas th {
-  background-color: #e0f7fa;
-  color: #000000;
+background-color: #e0f7fa;
+color: #000000;
 }
 
 .ficha-respuestas td {
-  background-color: #f1f1f1;
+background-color: #f1f1f1;
 }
 
 .ficha-respuestas {
-  margin-top: 10px;
+margin-top: 10px;
 }
 
 .table-container {
-  overflow-x: auto; /* Permite el scroll horizontal */
-  overflow-y: auto; /* Permite el scroll vertical */
-  max-height: 400px; /* Altura máxima del contenedor */
+overflow-x: auto; /* Permite el scroll horizontal */
+overflow-y: auto; /* Permite el scroll vertical */
+max-height: 400px; /* Altura máxima del contenedor */
 }
 
 .ficha-respuestas th,
 .ficha-respuestas td {
-  border: 1px solid #b2ebf2;
-  padding: 5px; /* Ajusta el padding para más espacio */
-  text-align: center; /* Centra el texto en las celdas */
-  min-width: 150px; /* Ancho mínimo para cada celda */
+border: 1px solid #b2ebf2;
+padding: 5px; /* Ajusta el padding para más espacio */
+text-align: center; /* Centra el texto en las celdas */
+min-width: 150px; /* Ancho mínimo para cada celda */
 }
 
 
 
 table {
-  border-collapse: collapse; /* Asegura que los bordes de las celdas se colapsen en una sola línea */
-  width: 100%; /* Hace que la tabla ocupe el 100% del ancho del contenedor */
+border-collapse: collapse; /* Asegura que los bordes de las celdas se colapsen en una sola línea */
+width: 100%; /* Hace que la tabla ocupe el 100% del ancho del contenedor */
 }
 
 th, td {
-  border: 1px solid #ddd; /* Agrega un borde a las celdas de la tabla */
-  padding: 8px; /* Agrega un espaciado interno a las celdas */
+border: 1px solid #ddd; /* Agrega un borde a las celdas de la tabla */
+padding: 8px; /* Agrega un espaciado interno a las celdas */
 }
 
 th {
-  background-color: #f2f2f2; /* Color de fondo para los encabezados de las columnas */
+background-color: #f2f2f2; /* Color de fondo para los encabezados de las columnas */
 }
 
-.excel-button {
-  background-color: #4CAF50; /* Color de fondo verde */
+/* Estilo del botón de exportación */
+.export-button {
+  background-color: #4CAF50; /* Color de fondo */
   color: white; /* Color del texto */
   border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
   padding: 10px 20px; /* Espaciado interno */
+  text-align: center; /* Centrar texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Para permitir márgenes */
   font-size: 16px; /* Tamaño de fuente */
-  cursor: pointer; /* Cursor tipo puntero al pasar sobre el botón */
-  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  transition: background-color 0.3s ease; /* Transición suave para el hover */
 }
 
-.excel-button:hover {
-  background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
+.export-button:hover {
+  background-color: #45a049; /* Color de fondo al pasar el mouse */
 }
 
-.excel-button:active {
-  transform: translateY(2px); /* Efecto de pulsación al hacer clic */
-}
 
 /* Media queries para dispositivos móviles */
 @media (max-width: 768px) {
-  .encuesta-container {
-    width: 95%;
-  }
+.encuesta-container {
+  width: 95%;
+}
 
-  .navbar {
-    padding: 10px;
-  }
+.navbar {
+  padding: 10px;
+}
 
-  #instructor-select {
-    font-size: 14px;
-  }
+#instructor-select {
+  font-size: 14px;
+}
 }
