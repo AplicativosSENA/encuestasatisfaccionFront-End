@@ -11,6 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 100px; /* Espacio superior dentro del contenedor */
     margin-top: 15vh; /* Ajusta el margen superior para no tapar el contenido con la navbar */
   }
   
@@ -142,7 +143,7 @@ body {
 
 .ficha-respuestas th, .ficha-respuestas td {
   border: 1px solid #b2ebf2;
-  padding: 8px;
+  padding: 5px;
   text-align: left;
 }
 
@@ -156,9 +157,24 @@ body {
 }
 
 .ficha-respuestas {
-  overflow-x: auto; /* Permite el desplazamiento horizontal */
-  margin-top: 10px; /* Espacio arriba del contenedor */
+  margin-top: 10px;
 }
+
+.table-container {
+  overflow-x: auto; /* Permite el scroll horizontal */
+  overflow-y: auto; /* Permite el scroll vertical */
+  max-height: 400px; /* Altura máxima del contenedor */
+}
+
+.ficha-respuestas th,
+.ficha-respuestas td {
+  border: 1px solid #b2ebf2;
+  padding: 5px; /* Ajusta el padding para más espacio */
+  text-align: center; /* Centra el texto en las celdas */
+  min-width: 150px; /* Ancho mínimo para cada celda */
+}
+
+
 
 table {
   border-collapse: collapse; /* Asegura que los bordes de las celdas se colapsen en una sola línea */
@@ -172,6 +188,25 @@ th, td {
 
 th {
   background-color: #f2f2f2; /* Color de fondo para los encabezados de las columnas */
+}
+
+.excel-button {
+  background-color: #4CAF50; /* Color de fondo verde */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cursor tipo puntero al pasar sobre el botón */
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.excel-button:hover {
+  background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+.excel-button:active {
+  transform: translateY(2px); /* Efecto de pulsación al hacer clic */
 }
 
 /* Media queries para dispositivos móviles */

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import * as XLSX from 'xlsx'; // Importar la biblioteca XLSX
 import '../../assets/css/Administrativos/Busqueda.css';
 
 const Encuesta = () => {
@@ -73,6 +74,41 @@ const Encuesta = () => {
     }
   };
 
+  const handleConvertToExcel = (fichaIndex) => {
+    const ficha = fichas[fichaIndex];
+    const fichaRespuestas = respuestas[fichaIndex] || [];
+
+    // Preparar datos para el Excel
+    const excelData = fichaRespuestas.map((respuesta) => ({
+      Ficha: respuesta.Ficha,
+      Nombre: respuesta.Nombre,
+      Apellidos: respuesta.Apellidos,
+      'Nom Instructor': respuesta['Nom Instructor'],
+      'Relaciones interpersonales': respuesta["El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas"],
+      'Socializa resultados': respuesta["El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre"],
+      'Estrategias participativas': respuesta["El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje"],
+      'Orientación mediante proyecto': respuesta["El Instructor le orienta su formación mediante un proyecto formativo"],
+      'Uso de Territorium': respuesta["El Instructor incentiva al aprendiz a utilizar la plataforma Zajuna en el desarrollo de las actividades de aprendizaje"],
+      'Orientación por guías': respuesta["El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo"],
+      'Puntualidad': respuesta["El Instructor es puntual al iniciar las sesiones"],
+      'Dominio técnico': respuesta["El Instructor demuestra dominio técnico"],
+      'Fuentes de consulta': respuesta["El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje"],
+      'Apoyo temáticas FPI': respuesta["El instructor brinda apoyo sobre temáticas del FPI (Formación Profesional Integral) cuando el aprendiz lo requiere y es comprensivo frente a dificultades"],
+      'Planes de mejoramiento': respuesta["El Instructor revisa y asesora los planes de mejoramiento"],
+      'Mejoramiento actitudinal': respuesta["El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación"],
+    }));
+
+    // Crear un libro de trabajo
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.json_to_sheet(excelData);
+    
+    // Añadir la hoja al libro
+    XLSX.utils.book_append_sheet(workbook, worksheet, `Ficha ${ficha}`);
+    
+    // Exportar el libro como archivo Excel
+    XLSX.writeFile(workbook, `Ficha_${ficha}.xlsx`);
+  };
+
   return (
     <div className="main-container">
       <nav className="navbar">
@@ -114,61 +150,66 @@ const Encuesta = () => {
                   </div>
                   {expandedFichas.includes(index) && (
                     <div className="ficha-respuestas">
-                      <table>
-                        <thead>
-                          <tr>
-                            {/* Agrega aquí los encabezados de la tabla */}
-                            <th>Ficha</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Nom Instructor</th>
-                            <th>El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas</th>
-                            <th>El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre</th>
-                            <th>El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje</th>
-                            <th>El Instructor le orienta su formación mediante un proyecto formativo</th>
-                            <th>El Instructor incentiva al aprendiz a utilizar la plataforma Territorium en el desarrollo de las actividades de aprendizaje</th>
-                            <th>El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo</th>
-                            <th>El Instructor es puntual al iniciar las sesiones</th>
-                            <th>El Instructor demuestra dominio técnico</th>
-                            <th>El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje</th>
-                            <th>El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades personales direccionando al área competente</th>
-                            <th>El Instructor revisa y asesora los planes de mejoramiento</th>
-                            <th>El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {respuestas[index] && Array.isArray(respuestas[index]) ? (
-                            respuestas[index].map((respuesta, idx) => (
-                              <tr key={idx}>
-                                <td>{respuesta.Ficha}</td>
-                                <td>{respuesta.Nombre}</td>
-                                <td>{respuesta.Apellidos}</td>
-                                <td>{respuesta['Nom Instructor']}</td>
-                                <td>{respuesta["El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas"]}</td>
-                                <td>{respuesta["El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre"]}</td>
-                                <td>{respuesta["El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje"]}</td>
-                                <td>{respuesta["El Instructor le orienta su formación mediante un proyecto formativo"]}</td>
-                                <td>{respuesta["El Instructor incentiva al aprendiz a utilizar la plataforma Territorium en el desarrollo de las actividades de aprendizaje"]}</td>
-                                <td>{respuesta["El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo"]}</td>
-                                <td>{respuesta["El Instructor es puntual al iniciar las sesiones"]}</td>
-                                <td>{respuesta["El Instructor demuestra dominio técnico"]}</td>
-                                <td>{respuesta["El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje"]}</td>
-                                <td>{respuesta["El instructor brinda apoyo sobre temáticas del FPI cuando el aprendiz lo requiere y es comprensivo frente a dificultades personales direccionando al área competente"]}</td>
-                                <td>{respuesta["El Instructor revisa y asesora los planes de mejoramiento"]}</td>
-                                <td>{respuesta["El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación"]}</td>
+                      <div className="table-container">
+                        <table>
+                          <thead>
+                            <tr>
+                              {/* Encabezados de la tabla */}
+                              <th>Ficha</th>
+                              <th>Nombre</th>
+                              <th>Apellidos</th>
+                              <th>Nom Instructor</th>
+                              <th>El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas</th>
+                              <th>El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre</th>
+                              <th>El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje</th>
+                              <th>El Instructor le orienta su formación mediante un proyecto formativo</th>
+                              <th>El Instructor incentiva al aprendiz a utilizar la plataforma Zajuna en el desarrollo de las actividades de aprendizaje</th>
+                              <th>El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo</th>
+                              <th>El Instructor es puntual al iniciar las sesiones</th>
+                              <th>El Instructor demuestra dominio técnico</th>
+                              <th>El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje</th>
+                              <th>El instructor brinda apoyo sobre temáticas del FPI (Formación Profesional Integral) cuando el aprendiz lo requiere y es comprensivo frente a dificultades</th>
+                              <th>El Instructor revisa y asesora los planes de mejoramiento</th>
+                              <th>El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {respuestas[index] && Array.isArray(respuestas[index]) ? (
+                              respuestas[index].map((respuesta, idx) => (
+                                <tr key={idx}>
+                                  <td>{respuesta.Ficha}</td>
+                                  <td>{respuesta.Nombre}</td>
+                                  <td>{respuesta.Apellidos}</td>
+                                  <td>{respuesta['Nom Instructor']}</td>
+                                  <td>{respuesta["El Instructor establece relaciones interpersonales cordiales, armoniosas, respetuosas"]}</td>
+                                  <td>{respuesta["El Instructor socializa, desarrolla y evalúa la totalidad de los resultados de aprendizaje programados para el semestre"]}</td>
+                                  <td>{respuesta["El instructor aplica estrategias participativas de trabajo en equipo que le permiten estar activo permanentemente en su proceso de aprendizaje"]}</td>
+                                  <td>{respuesta["El Instructor le orienta su formación mediante un proyecto formativo"]}</td>
+                                  <td>{respuesta["El Instructor incentiva al aprendiz a utilizar la plataforma Zajuna en el desarrollo de las actividades de aprendizaje"]}</td>
+                                  <td>{respuesta["El instructor orienta la formación por medio de guías teniendo en cuenta el proyecto formativo"]}</td>
+                                  <td>{respuesta["El Instructor es puntual al iniciar las sesiones"]}</td>
+                                  <td>{respuesta["El Instructor demuestra dominio técnico"]}</td>
+                                  <td>{respuesta["El Instructor le propone fuentes de consulta (bibliografía, webgrafía…) y ayudas que facilitan su proceso de aprendizaje"]}</td>
+                                  <td>{respuesta["El instructor brinda apoyo sobre temáticas del FPI (Formación Profesional Integral) cuando el aprendiz lo requiere y es comprensivo frente a dificultades"]}</td>
+                                  <td>{respuesta["El Instructor revisa y asesora los planes de mejoramiento"]}</td>
+                                  <td>{respuesta["El instructor, contribuye al mejoramiento actitudinal del aprendiz en su proceso de formación o El instructor contribuye al mejoramiento del aprendiz en su proceso de formación"]}</td>
+                                </tr>
+                              ))
+                            ) : (
+                              <tr>
+                                <td colSpan="15">No hay respuestas disponibles.</td>
                               </tr>
-                            ))
-                          ) : (
-                            <tr><td colSpan="16">Cargando respuestas...</td></tr>
-                          )}
-                        </tbody>
-                      </table>
-                    </div>
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
+                      <button className="excel-button" onClick={() => handleConvertToExcel(index)}>Convertir a Excel</button>
+                      </div>
                   )}
                 </li>
               ))
             ) : (
-              <li>No hay fichas disponibles para el instructor seleccionado.</li>
+              <li>No hay fichas disponibles para este instructor.</li>
             )}
           </ul>
         </div>
