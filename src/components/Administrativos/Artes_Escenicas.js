@@ -19,7 +19,7 @@ const Encuesta = () => {
   useEffect(() => {
     const fetchInstructores = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/instructor/unicos');
+        const response = await axios.get('http://localhost:5000/api/coordinador/Artes_Escenicas');
         setInstructores(response.data);
       } catch (error) {
         console.error('Error al obtener los instructores:', error);

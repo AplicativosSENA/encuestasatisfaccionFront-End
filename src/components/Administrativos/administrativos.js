@@ -11,23 +11,29 @@ const LoginForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     if (!email || !password) {
       Swal.fire('Error', 'Por favor complete todos los campos', 'error');
       return;
     }
-
+  
     try {
-      const response = await axios.post('https://encuestasatisfaccionback-end.onrender.com/api/administrador/login', {
+      const response = await axios.post('http://localhost:5000/api/administrador/login', {
         correo: email,
         contraseña: password,
       });
-
-      // Suponiendo que la respuesta es { token: '...' }
+  
+      // Suponiendo que la respuesta es { token: '...', esAdministrativo: true/false }
       if (response.data.token) {
         Swal.fire('Bienvenido', 'Inicio de sesión exitoso', 'success');
         localStorage.setItem('token', response.data.token); // Guardar el token en localStorage si es necesario
-        navigate('/busqueda'); // Redirige a la página de búsqueda
+  
+        // Redirige a la página adecuada según el usuario
+        if (response.data.esAdministrativo) {
+          navigate('/Busqueda'); // Redirige a la página de Administrativos
+        } else {
+          navigate('/coordinacion'); // Redirige a la página de Coordinación
+        }
       } else {
         Swal.fire('Error', 'No se pudo iniciar sesión', 'error');
       }
@@ -44,8 +50,8 @@ const LoginForm = () => {
           {/* Aquí podrías agregar contenido adicional en el navbar */}
         </div>
       </nav>
-      <br></br>
-      <br></br>
+      <br />
+      <br />
       <div className="login-container">
         <div className="login-form">
           <h2>Iniciar Sesión</h2>
