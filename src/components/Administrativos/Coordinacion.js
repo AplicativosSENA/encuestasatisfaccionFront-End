@@ -20,7 +20,7 @@ const Coordinacion = () => {
       </nav>
       <br />
       <div className="coordinacion-container">
-        <h1>Escoge Una Coordinacion</h1>
+        <h1>Seleccione una Coordinación</h1>
         <div className="coordinacion-images">
           <div className="coordinacion-item" onClick={() => handleClick('Artes_Escenicas')}>
             <img src={require('../../assets/img/Artes_Escenicas.jpeg')} alt="Artes Escénicas" />

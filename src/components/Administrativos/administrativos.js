@@ -11,28 +11,42 @@ const LoginForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     if (!email || !password) {
       Swal.fire('Error', 'Por favor complete todos los campos', 'error');
       return;
     }
-  
+
     try {
       const response = await axios.post('http://localhost:5000/api/administrador/login', {
         correo: email,
         contraseña: password,
       });
-  
-      // Suponiendo que la respuesta es { token: '...', esAdministrativo: true/false }
+
+      // Verifica si la respuesta contiene un token
       if (response.data.token) {
         Swal.fire('Bienvenido', 'Inicio de sesión exitoso', 'success');
         localStorage.setItem('token', response.data.token); // Guardar el token en localStorage si es necesario
-  
-        // Redirige a la página adecuada según el usuario
+
+        // Redirige a la página adecuada según el tipo de usuario
         if (response.data.esAdministrativo) {
-          navigate('/Busqueda'); // Redirige a la página de Administrativos
+          navigate('/Coordinacion'); // Página de Administrativos
         } else {
-          navigate('/coordinacion'); // Redirige a la página de Coordinación
+          // Redirige según la coordinación
+          switch (response.data.coordinacion) {
+            case 'ARTES ESCÉNICAS':
+              navigate('/Artes_Escenicas'); // Redirige a la página de Artes Escénicas
+              break;
+            case 'DEPORTES':
+              navigate('/Deportes'); // Redirige a la página de Deportes
+              break;
+            case 'MUSICA Y AUDIOVISUALES':
+              navigate('/Musica_Audiovisuales'); // Redirige a la página de Música y Audiovisuales
+              break;
+            default:
+              navigate('/Coordinacion'); // Redirige a la página genérica de Coordinación
+              break;
+          }
         }
       } else {
         Swal.fire('Error', 'No se pudo iniciar sesión', 'error');
